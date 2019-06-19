@@ -14,3 +14,8 @@
 Route::get('/', 'StoreController@index');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
+
+Auth::routes();
+
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
