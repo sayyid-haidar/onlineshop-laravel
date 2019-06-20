@@ -20,9 +20,13 @@ Auth::routes();
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 
 Route::prefix('/dashboard')->group(function(){
-    Route::get('/product', 'AdminController@product');
+    Route::resource("/product", "Admin\ProductController");
     Route::get('/tabel', 'AdminController@tabel');
     Route::get('/toko', 'AdminController@toko');
     Route::get('/diskon', 'AdminController@diskon');
+
+    
+
 });
+
 
