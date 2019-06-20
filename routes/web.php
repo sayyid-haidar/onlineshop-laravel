@@ -17,5 +17,12 @@ Route::get('/aboute', 'StoreController@aboute');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+
+Route::prefix('/dashboard')->group(function(){
+    Route::get('/product', 'AdminController@product');
+    Route::get('/tabel', 'AdminController@tabel');
+    Route::get('/toko', 'AdminController@toko');
+    Route::get('/diskon', 'AdminController@diskon');
+});
 

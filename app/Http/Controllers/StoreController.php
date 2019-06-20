@@ -8,16 +8,16 @@ class StoreController extends Controller
 {
     public function index()
     {
-        return view('store');
+        return view('store.store');
     }
 
     public function product()
     {
-        return view('product');
+        return view('store.product');
     }
 
     public function aboute()
     {
-        return view('aboute');
+        return view('store.aboute');
     }
 }

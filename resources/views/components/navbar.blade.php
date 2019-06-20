@@ -46,6 +46,7 @@
             @if(Auth::check() && Auth::user()->status_field != 'approved')
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
+                <a href="{{url('/dashboard')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Admin</a>
                 <button type="submit" class="btn btn-outline-danger my-sm-0 mx-2">Logout</button>
             </form>
 
