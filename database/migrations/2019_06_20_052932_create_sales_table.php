@@ -15,6 +15,20 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger("user_id")->unsigned()->nullable();
+            $table->string("nama");
+            $table->string("email");
+            $table->string("phone");
+            $table->text("alamat");
+            $table->timestamps();
+        });
+
+        Schema::create('sale_items', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger("sale_id")->unsigned();
+            $table->bigInteger("product_id")->unsigned();
+            $table->integer("qty");
+            $table->integer("price");
             $table->timestamps();
         });
     }
@@ -27,5 +41,6 @@ class CreateSalesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('sales');
+        Schema::dropIfExists('sale_items');
     }
 }
