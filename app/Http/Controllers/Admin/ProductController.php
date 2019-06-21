@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Product;
 use App\Categorie;
 use Illuminate\Http\Request;
@@ -50,7 +51,7 @@ class ProductController extends Controller
         $product->stock =  $request->input("stock");
         // $product->file =  $request->input("file");
         $product->save();
-        return redirect()->to("dashboard/product/create");
+        return redirect()->to("dashboard/product");
     }
 
     /**
