@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
-use App\Product;
-use App\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class DiskonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy("id", "DESC")->paginate(10);
-        return view("dashboard.a_product", compact('products'));
-    }
-    public function tabel()
-    {
-        return view('dashboard.a_tabel');
+        //
     }
 
     /**
@@ -31,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.a_product_create');
+        //
     }
 
     /**
@@ -42,15 +35,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
-        $product->code = $request->input("code_product");
-        $product->name =  $request->input("nama_product");
-        $product->varian =  $request->input("varian");
-        $product->price =  $request->input("price");
-        $product->stock =  $request->input("stock");
-        // $product->file =  $request->input("file");
-        $product->save();
-        return redirect()->to("dashboard/product");
+        //
     }
 
     /**
@@ -60,7 +45,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { }
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.

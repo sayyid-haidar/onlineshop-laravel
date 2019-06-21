@@ -19,14 +19,15 @@ Auth::routes();
 
 Route::get('/dashboard', 'AdminController@index');
 
-Route::prefix('/dashboard')->group(function(){
+Route::prefix('/dashboard')->group(function () {
     Route::resource("/product", "Admin\ProductController");
     Route::get('/tabel', 'AdminController@tabel');
     Route::get('/toko', 'AdminController@toko');
     Route::get('/diskon', 'AdminController@diskon');
-
-    
-
+    Route::resource('/template', 'Admin\TemplateController');
+    Route::get('/template-edit', 'TemplateController@edit');
+    Route::get('/create', 'TemplateController@create');
+    Route::get('/insert-insert', 'TemplateController@store');
+    Route::post('/template/$template->id/edit', 'TemplateController@edit');
+    Route::post('/template/$template->$id/edit', 'TemplateController@edit');
 });
-
-

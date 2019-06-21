@@ -12,7 +12,17 @@
 
             <a href="{{url('/dashboard/product/create')}}">
               <button class="btn btn-primary">Tambah Product</button>
-            </a><br><br>
+            </a><br>
+            {{-- @if( Session::has("success"))
+              <div class="alert alert-success">
+               {{Session::get('success')}}
+              </div>
+            @endif    
+            @if( Session::has("error"))
+                 <div class="alert alert-danger">
+                                {{Session::get('error')}}
+                            </div>
+                        @endif<br> --}}
             <div class="table-responsive">
               <table id="table-product" class="table table-striped table-bordered">
                 <thead>
@@ -29,7 +39,7 @@
                 <tbody>
                   <tr>
                     @foreach ( $products as $product)
-                    <td></td>
+                    <td>{{$product->image}}</td>
                     <td>{{$product->code}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->varian}}</td>
