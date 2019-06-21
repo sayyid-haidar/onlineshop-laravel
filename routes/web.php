@@ -31,4 +31,5 @@ Route::prefix('/dashboard')->group(function () {
     Route::get('/insert-insert', 'TemplateController@store');
     Route::post('/template/$template->id/edit', 'TemplateController@edit');
     Route::post('/template/$template->$id/edit', 'TemplateController@edit');
+    Route::resource('/pages', 'Admin\PageController');
 });

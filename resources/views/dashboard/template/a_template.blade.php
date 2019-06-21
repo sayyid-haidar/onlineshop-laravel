@@ -40,16 +40,14 @@
                           <td>{{$data->folder}}</td>
                           <td>{{$data->selected}}</td>
                           <td>
-                              <form action='{{url("dashboard/template/$data->id")}}' method="POST">
+                              <form style="inlin-block" action='{{url("dashboard/template/$data->id")}}' method="POST">
                                 @method("delete")
                                 @csrf
                                 <button class="btn btn-primary" onClick="return confirm('yakin ?')">
                                     <i class="fa fa-trash"></i>
                                 </button>
+                                <a href='{{url("dashboard/template/$data->id/edit")}}' class="btn btn-warning">edit</a>
                               </form>
-                              <a href='{{url("dashboard/template/$data->id/edit")}}'>
-                                <button class="btn btn-warning">edit</button>
-                                </a>
                               
                           </td>
                         </tr>

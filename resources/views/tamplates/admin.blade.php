@@ -61,10 +61,9 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="{{url('dashboard/diskon')}}">
                 <a class="nav-link" href="{{url('dashboard/template')}}">
                     <i class="fas fa-id-card"></i>
-                    <span>Diskon</span></a>
+                    <span>Template</span></a>
             </li>
 
             <li class="nav-item active">
