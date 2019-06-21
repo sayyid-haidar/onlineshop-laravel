@@ -1,3 +1,9 @@
 @extends('tamplates.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Toko Page')
+
+@section('content')
+
+
+
+@endsection

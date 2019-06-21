@@ -1,6 +1,8 @@
 @section('title', 'Dashboard')
 
 @extends('tamplates.admin')
+
+
 @section('content')
 <section class="pb-4">
   <div class="container-fluid">

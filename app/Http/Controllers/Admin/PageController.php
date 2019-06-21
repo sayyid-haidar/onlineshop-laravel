@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::all();
+        return view('dashboard.pages.a_page', compact('pages'));
     }
 
     /**
@@ -24,7 +31,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pages.a_page_create');
     }
 
     /**
@@ -35,7 +42,17 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'judul'=>'required',
+            'content'=>'required'
+        ]);
+
+        $pages = new Page;
+        $pages->judul = $request->input("judul");
+        $pages->content =  $request->input("content");
+        $pages->save();
+
+        return redirect()->to("dashboard/pages");
     }
 
     /**
@@ -57,7 +74,8 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pages = Page::find($id);
+        return view('dashboard.pages.a_page_edit', compact('pages'));
     }
 
     /**
@@ -69,7 +87,20 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'judul'=>'required',
+            'content'=>'required'
+        ]);
+
+        $judul = $request->input("judul");
+        $content = $request->input("content");
+
+        $page = Page::find($id) ;
+        $page->judul = $request->input('judul');
+        $page->content = $request->input('content');
+        $page->save();
+
+        return redirect()->to("dashboard/pages");
     }
 
     /**
@@ -80,6 +111,7 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pages = Page::find($id)->delete() ;
+        return back();
     }
 }

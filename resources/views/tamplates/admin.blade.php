@@ -71,6 +71,12 @@
             </li>
 
             <li class="nav-item active">
+                <a class="nav-link" href="{{url('dashboard/pages')}}">
+                    <i class="fas fa-store"></i>
+                    <span>Pages</span></a>
+            </li>
+
+            <li class="nav-item active">
                 <a class="nav-link" href="{{url('dashboard/toko')}}">
                     <i class="fas fa-store"></i>
                     <span>Toko</span></a>

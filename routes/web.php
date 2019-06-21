@@ -21,12 +21,10 @@ Route::get('/dashboard', 'AdminController@index');
 
 Route::prefix('/dashboard')->group(function(){
     Route::resource("/product", "Admin\ProductController");
+    Route::resource('/pages', 'Admin\PageController');
     Route::get('/tabel', 'AdminController@tabel');
     Route::get('/toko', 'AdminController@toko');
     Route::get('/diskon', 'AdminController@diskon');
-
-    
-
 });
 
 
