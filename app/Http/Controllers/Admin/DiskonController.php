@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
-use App\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategorieController extends Controller
+class DiskonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $list_categories = Categorie::paginate(5);
-        return view("dashboard.Categorie.a_categorie", compact('list_categories'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        return view('dashboard.Categorie.a_categorie_create');
+        //
     }
 
     /**
@@ -37,10 +35,7 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        $categorie = new Categorie;
-        $categorie->name = $request->input("name");
-        $categorie->save();
-        return redirect()->to('dashboard/categorie/create')->withInput();
+        //
     }
 
     /**
@@ -62,8 +57,7 @@ class CategorieController extends Controller
      */
     public function edit($id)
     {
-        $categorie = Categorie::find($id);
-        return view('dashboard.Categorie.a_categorie_edit', compact('categorie'));
+        //
     }
 
     /**
@@ -75,11 +69,7 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categorie = Categorie::find($id);
-        $categorie->name = $request->input("name");
-        $categorie->status = $request->input("status");
-        $categorie->save();
-        return redirect()->to("dashboard/categorie");
+        //
     }
 
     /**
@@ -90,7 +80,6 @@ class CategorieController extends Controller
      */
     public function destroy($id)
     {
-        Categorie::find($id)->delete();
-        return redirect()->to("dashboard/categorie");
+        //
     }
 }
