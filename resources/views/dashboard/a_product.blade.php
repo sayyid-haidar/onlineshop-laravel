@@ -36,10 +36,12 @@
                     <td>{{$product->price}}</td>
                     <td>{{$product->stock}}</td>
                     <td>
-                      <form action='' method="POST">
-                        <button class="btn btn-danger" onClick="return confirm('yakin ?')"><i class="fa fa-trash"></i></button>
-                        <a href=''><button class="btn btn-warning">edit</button></a>
+                      <form action="{{url('dashboard/product',$product->id)}}" method="POST" style='display:inline-block'>
+                        @method("delete")
+                        @csrf
+                        <button class="btn btn-danger" onClick="return confirm('yakin ?')"><i class="fas fa-trash"></i></button>
                       </form>
+                      <a href="{{url('dashboard/product',$product->id)}}/edit"><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
                     </td>
                   </tr>
                   @endforeach

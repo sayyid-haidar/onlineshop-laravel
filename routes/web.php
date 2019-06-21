@@ -21,6 +21,7 @@ Route::get('/dashboard', 'AdminController@index');
 
 Route::prefix('/dashboard')->group(function(){
     Route::resource("/product", "Admin\ProductController");
+    Route::resource("/categorie", "Admin\CategorieController");
     Route::get('/tabel', 'AdminController@tabel');
     Route::get('/toko', 'AdminController@toko');
     Route::get('/diskon', 'AdminController@diskon');

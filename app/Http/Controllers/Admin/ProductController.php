@@ -13,6 +13,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $products = Product::orderBy("id", "DESC")->paginate(10);
@@ -60,7 +61,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-
+        return 'ini function show';
     }
 
     /**
@@ -71,7 +72,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view("dashboard.a_product_edit", compact('product'));
     }
 
     /**
@@ -83,7 +85,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id); 
+        $product->code = $request->input("code_product");
+        $product->name =  $request->input("nama_product");
+        $product->varian =  $request->input("varian");
+        $product->price =  $request->input("price");
+        $product->stock =  $request->input("stock"); 
+        $product->save() ; 
+        return redirect()->to("dashboard/product");
     }
 
     /**
@@ -94,6 +103,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::find($id)->delete();
+        return redirect()->to("dashboard/product"); 
     }
 }
