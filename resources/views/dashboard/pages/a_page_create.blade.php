@@ -1,4 +1,4 @@
-@section('title', 'Pages\Create')
+@section('title', 'Add Pages')
 
 @extends('tamplates.admin')
 <style>

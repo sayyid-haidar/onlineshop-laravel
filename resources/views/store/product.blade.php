@@ -45,7 +45,7 @@
         <div class="card-body">
             <p class="card-text">Coffee</p>
             <h3 class="card-title">Toraja Coffee</h3>
-            <p class="btn btn-primary">Buy Here!</p>
+            <a href="{{url('/product/detail')}}" class="btn btn-primary">Buy Here!</a>
         </div>
     </div>
     @endfor
