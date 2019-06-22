@@ -17,15 +17,15 @@
 
     @yield('style')
 </head>
-
 <body>
 
     <div class="container">
         @include('components.navbar')
+              <tbody>
+                    @yield('content')
+              </tbody>
+          </div>
 
-
-
-        @yield('content')
     </div>
 
     @if( Route::is('dashboard','login','register'))
@@ -39,9 +39,32 @@
         @include('components.footer')
     </footer>
     @endif
+<script>
+    $(document).ready(function(){
 
+        fetch_product_data();
+        
+        function fetch_product_data(query = ''){
+            $.ajax({
+                url : "{{url('/product/action')}}",
+                method : "GET",
+                data : {query:query},
+                dataType : 'json',
+                success : function(data){
+                    $('tbody').html(data.table_data);
+                    $('#total_records').text(data.total_data);
+                    
+                }
+            });
+        }
+        $(document).on('keyup', '#search', function(){
+            var query = $(this).val();
+            fetch_product_data(query); 
+        });
+    });
 
-    @yield('script')
+</script>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

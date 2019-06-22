@@ -14,9 +14,12 @@
 Route::get('/', 'StoreController@index');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
-Route::get('/product/detail', function(){
+Route::get('/product/detail', function () {
     return view('store.product_detail');
 });
+// Route::get('product/detail/$product->id', function () {
+//     return view('store.product_detail');
+// });
 
 Auth::routes();
 
