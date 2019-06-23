@@ -2,7 +2,9 @@
 
 @section('title', 'Store')
 
-
+@php
+    use App\Categorie;
+@endphp
 
 @section('style')
 <style>
@@ -32,7 +34,16 @@
         flex: 0 0 auto;
         margin: 5px;
     }
-
+    .JumboGambar{
+        background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
+        background-size: cover;
+        font-family: 'Lobster', cursive;
+        font-size: 24px;
+        font-variant: inherit;
+        text-shadow: 3px 2px 1px grey;
+        text-align: center;
+    }
+    /* Penambahan Style Jumbotron */
     @media(min-width: 768px) {
         .header_cards {
             display: inline-block;
@@ -52,7 +63,11 @@
 @endsection
 
 @section('content')
-
+{{-- Buat Pemanggilan Data Dari database --}}
+@php
+    $categories = Categorie::all();
+@endphp
+{{-- Buat Pemanggilan Data Dari database --}}
 <header class="pt-3">
     <div class="row">
         <div class="col-md-6">
@@ -73,9 +88,12 @@
 
 {{-- CARD --}}
 <div class="row">
-    @for($i=0;$i<4;$i++) <div class="col-6 col-md-3">
-        <div class="jumbotron bg-primary">Class</div>
-</div>
+    @for($i=0;$i<1;$i++) 
+     @foreach ($categories as $categorie)
+        <div class="col-6 col-md-3">
+        <div class="jumbotron JumboGambar bg-primary" style="color:black;">{{ $categorie->name }}</div>
+        </div>
+     @endforeach
 @endfor
 </div>
 

@@ -21,7 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('varian')->nullable();
             $table->integer('price')->nullable()->default(0);
             $table->integer('stock')->nullable()->default(0);
-            $table->bigInteger("categorie_id")->unsigned()->nullable()->default(0);
+            $table->bigInteger("categorie_id")->unsigned();
+            $table->foreign("categorie_id")->references('id')->on('categories')->onDelete('cascade');
             $table->enum('level',['parent','child'])->default('parent');
             $table->integer("parent_id")->nullable()->default(0);
             $table->text("description")->nullable();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class CategorieController extends Controller
 {
@@ -24,6 +25,7 @@ class CategorieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         return view('dashboard.Categorie.a_categorie_create');
@@ -37,10 +39,14 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|string|max:20'
+        ]);
         $categorie = new Categorie;
         $categorie->name = $request->input("name");
         $categorie->save();
-        return redirect()->to('dashboard/categorie/create')->withInput();
+        Session::flash("success", "berhasil Menambah Categorie");
+        return redirect()->to('dashboard/categorie')->withInput();
     }
 
     /**
@@ -78,7 +84,14 @@ class CategorieController extends Controller
         $categorie = Categorie::find($id);
         $categorie->name = $request->input("name");
         $categorie->status = $request->input("status");
+
+        $this->validate($request, [
+            'name' => 'required|string|max:100',
+            'status' => 'required|string|max:10'
+        ]);
+
         $categorie->save();
+        Session::flash("success", "berhasil Merubah Categorie");
         return redirect()->to("dashboard/categorie");
     }
 
@@ -91,6 +104,7 @@ class CategorieController extends Controller
     public function destroy($id)
     {
         Categorie::find($id)->delete();
+        Session::flash("success", "berhasil Menghapus Categorie");
         return redirect()->to("dashboard/categorie");
     }
 }

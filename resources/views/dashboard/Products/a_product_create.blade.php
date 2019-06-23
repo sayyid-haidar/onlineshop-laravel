@@ -53,6 +53,16 @@
                 </div>
               </div>
               <div class="form-group">
+                <label for="penerbit">categorie</label>
+                <select name="categorie_id" id="categorie_id" class="form-control">
+                    <option value="">>> PILIHAN <<</option>
+                    @foreach($list_categories as $categorie)
+                    <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+                    @endforeach
+                </select>
+              </div>
+              
+              <div class="form-group">
                 <div class="row">
                   <div class="col-md-8">
                     <img src="images/cover-kosong.png" id="tampil" name="tampil" class="shadow p-1  bg-light rounded" alt="" style="width: 170px;">
