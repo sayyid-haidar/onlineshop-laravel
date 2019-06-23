@@ -40,7 +40,7 @@
         font-family: 'Lobster', cursive;
         font-size: 24px;
         font-variant: inherit;
-        text-shadow: 3px 2px 1px grey;
+        text-shadow: 3px 2px 1px black;
         text-align: center;
     }
     /* Penambahan Style Jumbotron */
@@ -91,7 +91,7 @@
     @for($i=0;$i<1;$i++) 
      @foreach ($categories as $categorie)
         <div class="col-6 col-md-3">
-        <div class="jumbotron JumboGambar bg-primary" style="color:black;">{{ $categorie->name }}</div>
+        <div class="jumbotron JumboGambar bg-primary" style="color:yellow;">{{ $categorie->name }}</div>
         </div>
      @endforeach
 @endfor
