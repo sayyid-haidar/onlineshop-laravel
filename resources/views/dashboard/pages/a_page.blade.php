@@ -1,6 +1,6 @@
 @extends('tamplates.admin')
 
-@section('title', 'Admin\Pages')
+@section('title', 'Admin Pages')
 
 
 @section('content')
@@ -28,7 +28,7 @@
                                         @foreach ( $pages as $page)
                                         <td>{{ $page->judul }}</td>
                                         <td>
-                                            <form action='{{url("dashboard/page/$page->id")}}' method="POST">
+                                            <form action='{{url("dashboard/pages/$page->id")}}' method="POST">
                                                 @csrf
                                                 @method("DELETE")
                                                 <button class="btn btn-danger"

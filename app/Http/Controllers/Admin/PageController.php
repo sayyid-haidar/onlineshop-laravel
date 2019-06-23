@@ -20,7 +20,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::get();
         return view('dashboard.pages.a_page', compact('pages'));
     }
     public function database()

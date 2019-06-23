@@ -14,6 +14,9 @@
 Route::get('/', 'StoreController@index');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
+Route::get('/product/detail', function(){
+    return view('store.product_detail');
+});
 
 Auth::routes();
 
@@ -22,14 +25,15 @@ Route::get('/dashboard', 'AdminController@index');
 Route::prefix('/dashboard')->group(function () {
     Route::resource("/product", "Admin\ProductController");
     Route::resource("/categorie", "Admin\CategorieController");
+    Route::resource('/pages', 'Admin\PageController');
+    Route::resource('/template', 'Admin\TemplateController');
+
     Route::get('/tabel', 'AdminController@tabel');
     Route::get('/toko', 'AdminController@toko');
-    Route::get('/diskon', 'AdminController@diskon');
-    Route::resource('/template', 'Admin\TemplateController');
     Route::get('/template-edit', 'TemplateController@edit');
     Route::get('/create', 'TemplateController@create');
     Route::get('/insert-insert', 'TemplateController@store');
-    Route::post('/template/$template->id/edit', 'TemplateController@edit');
-    Route::post('/template/$template->$id/edit', 'TemplateController@edit');
-    Route::resource('/pages', 'Admin\PageController');
+
+    Route::post('/template/{id}/edit', 'TemplateController@edit');
+    Route::post('/template/{id}/edit', 'TemplateController@edit');
 });
