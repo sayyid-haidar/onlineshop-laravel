@@ -13,17 +13,13 @@
             <a href="{{url('/dashboard/product/create')}}">
               <button class="btn btn-primary">Tambah Product</button>
             </a><br>
-            {{-- @if( Session::has("success"))
-              <div class="alert alert-success">
-               {{Session::get('success')}}
-              </div>
-            @endif    
-            @if( Session::has("error"))
-                 <div class="alert alert-danger">
-                                {{Session::get('error')}}
-                            </div>
-                        @endif<br> --}}
-            <div class="table-responsive">
+            @if ( Session::has("success") )
+            <div class="alert alert-success">{{Session::get('success')}}</div>
+            @endif
+            @if ( Session::has("error") )
+            <div class="alert alert-danger">{{Session::get('error')}}</div>
+            @endif
+            <div class="table-responsive pt-4">
               <table id="table-product" class="table table-striped table-bordered">
                 <thead>
                   <tr>
@@ -33,6 +29,7 @@
                     <th>Varian</th>
                     <th>Price</th>
                     <th>Stock</th>
+                    <th>Categorie</th>
                     <th width="200px">action</th>
                   </tr>
                 </thead>
@@ -45,6 +42,7 @@
                     <td>{{$product->varian}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->stock}}</td>
+                    <td>{{$product->categorie->name}}</td>
                     <td>
                       <form action="{{url('dashboard/product',$product->id)}}" method="POST" style='display:inline-block'>
                         @method("delete")

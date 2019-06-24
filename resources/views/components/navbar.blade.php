@@ -1,3 +1,6 @@
+<?php  
+    use App\Categorie;
+?>
 
 <style>
     .navbar-brand{
@@ -20,6 +23,10 @@
     }
 </style>
 
+@php
+    $categories = Categorie::all();
+@endphp
+
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
         <a class="navbar-brand" href="{{url('')}}">
@@ -31,9 +38,14 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="btn_navbar nav-item mx-2">
-                    <a href="{{url('')}}">Catagorie</a>
+            <ul class="dropdown navbar-nav mr-auto ">
+                <li class='btn_navbar nav-item mx-2 ' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><a href="{{url('')}}">Categorie</a>
+                <div class="dropdown-menu pb-2">
+                    <h6 class="dropdown-header" align="center">Pilihan Kopi</h6>
+                    @foreach ( $categories as $categorie )
+                    <a  class="dropdown-item"href='#'>{{ $categorie->name }}</a>
+                    @endforeach
+                </div>
                 </li>
                 <li class="btn_navbar nav-item mx-2">
                     <a href="{{url('product')}}">Product</a>

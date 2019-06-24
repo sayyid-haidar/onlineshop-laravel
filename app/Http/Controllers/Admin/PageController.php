@@ -23,6 +23,11 @@ class PageController extends Controller
         $pages = Page::get();
         return view('dashboard.pages.a_page', compact('pages'));
     }
+    public function database()
+    {
+        $pages = Page::all();
+        return view('components.navbar', compact('pages'));
+    }
 
     /**
      * Show the form for creating a new resource.
