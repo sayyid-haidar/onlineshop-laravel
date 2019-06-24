@@ -16,6 +16,36 @@
     <title>@yield('title')</title>
 
     @yield('style')
+    <style>
+        #keranjang {
+            border-radius: 50% 5px 50% 50%;
+            position: fixed;
+            bottom: 3rem;
+            right: 3rem;
+            width: 5rem;
+            height: 5rem;
+            line-height: 6rem;
+            text-align: center;
+            background: #f9423a;
+        }
+
+        #keranjang_jumlah {
+            position: absolute;
+            background: salmon;
+            border-radius: 50%;
+            bottom: 0;
+            left: -0.5rem;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            color: white;
+        }
+        .dropdown-item {
+            height: 3rem;
+            line-height: 3rem;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -37,6 +67,18 @@
     @else
     <footer class="container">
         @include('components.footer')
+        <div id="keranjang">
+            <div id="keranjang_jumlah">
+                5
+            </div>
+            <div class="dropdown mr-1">
+                <i class="fa fa-cart-plus fa-3x" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" data-offset="10,20" style="color: white"></i>
+                <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuOffset" style="width: 15rem">
+                    <p class="dropdown-item">keranjang</p>
+                </div>
+            </div>
+        </div>
     </footer>
     @endif
 <script>
@@ -78,6 +120,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
+    @yield('script')
 </body>
 
 </html>
