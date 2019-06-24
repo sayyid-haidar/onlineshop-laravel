@@ -38,7 +38,7 @@
         background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
         background-size: cover;
         font-family: 'Lobster', cursive;
-        font-size: 24px;
+        font-size: 19px;
         font-variant: inherit;
         text-shadow: 3px 2px 1px black;
         text-align: center;
@@ -56,6 +56,15 @@
             width: 12rem;
             height: 22rem;
             margin: 5px;
+        }
+        .JumboGambar{
+        background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
+        background-size: cover;
+        font-family: 'Lobster', cursive;
+        font-size: 24px;
+        font-variant: inherit;
+        text-shadow: 3px 2px 1px black;
+        text-align: center;
         }
     }
 

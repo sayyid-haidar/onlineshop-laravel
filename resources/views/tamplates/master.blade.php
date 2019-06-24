@@ -11,6 +11,9 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     {{-- Link Font Google --}}
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    {{-- Link CSS OwlCarousel --}}
+    <link rel="stylesheet" href="{{asset('owlcarousel/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('owlcarousel/owl.theme.default.min.css')}}">
 
     <title>@yield('title')</title>
 
@@ -53,6 +56,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    {{-- Script Owl Carousel --}}
+    <script src="{{ asset('owlcarousel/jquery.min.js') }}"></script>
+    <script src="{{ asset('owlcarousel/owl.carousel.min.js') }}"></script>
+    
 </body>
 
 </html>

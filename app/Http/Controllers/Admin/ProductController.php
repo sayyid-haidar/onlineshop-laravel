@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Storage;
 use App\Product;
 use App\Categorie;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::orderBy("id", "DESC")->paginate(10);
+        $products = Product::orderBy("id", "DESC")->paginate(3);
         return view("dashboard.Products.a_product", compact('products'));
     }
     public function tabel()
@@ -45,6 +45,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000',
+            'code' => 'required|unique:products,code',
+            'name' => 'required',
+            'varian' => 'required',
+            'stock' => 'required|integer',
+            'price' => 'required|integer',
+            'categorie_id' => 'required|integer'
+        ]);
+
         $product = new Product;
         $product->code = $request->input("code_product");
         $product->name =  $request->input("nama_product");
@@ -52,8 +62,11 @@ class ProductController extends Controller
         $product->price =  $request->input("price");
         $product->stock =  $request->input("stock");
         $product->categorie_id  = $request->input("categorie_id");
-        // $product->file =  $request->input("file");
         $product->save();
+        //upload file to storage
+        $path = $request->file('image')->storeAs('public/product', $product->id . '.jpg');
+        $product->image = $product->id . '.jpg';
+        $product->save(); 
         Session::flash("success", "berhasil Menambah Product");
         return redirect()->to("dashboard/product");
     }

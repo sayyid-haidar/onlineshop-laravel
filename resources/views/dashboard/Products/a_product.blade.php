@@ -1,3 +1,9 @@
+<style>
+  .paging {
+    float: right;
+    text-align: right;
+  }
+</style>
 @extends('tamplates.admin')
 
 @section('title', 'Dashboard')
@@ -10,15 +16,18 @@
         <div class="card">
           <div class="card-body">
 
-            <a href="{{url('/dashboard/product/create')}}">
+            <a href="{{url('/dashboard/product/create')}}" >
               <button class="btn btn-primary">Tambah Product</button>
             </a><br>
+            {{-- Flash Message --}}
             @if ( Session::has("success") )
+            <br>
             <div class="alert alert-success">{{Session::get('success')}}</div>
             @endif
             @if ( Session::has("error") )
             <div class="alert alert-danger">{{Session::get('error')}}</div>
             @endif
+            {{-- Flash Message --}}
             <div class="table-responsive pt-4">
               <table id="table-product" class="table table-striped table-bordered">
                 <thead>
@@ -36,7 +45,7 @@
                 <tbody>
                   <tr>
                     @foreach ( $products as $product)
-                    <td>{{$product->image}}</td>
+                    <td><img src="{{url('')}}/storage/product/{{$product->image}}" style="width: 50px"></td>
                     <td>{{$product->code}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->varian}}</td>
@@ -54,6 +63,10 @@
                   </tr>
                   @endforeach
               </table>
+              {{-- Pemanggilan Paginate dibuat 3 data --}}
+              <div class="paging">
+                {{$products->links()}}
+              </div>
             </div>
 
           </div>
