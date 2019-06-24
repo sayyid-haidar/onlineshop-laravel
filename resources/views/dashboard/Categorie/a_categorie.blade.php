@@ -12,6 +12,17 @@
             <a href="{{url('dashboard/categorie/create')}}">
               <button class="btn btn-primary">Tambah Categorie</button>
             </a><br><br>
+            @if( Session::has("success"))
+              <div class="alert alert-success">
+                  {{Session::get('success')}}
+              </div>
+            @endif
+
+            @if( Session::has("error"))
+                <div class="alert alert-danger">
+                    {{Session::get('error')}}
+                </div>
+            @endif
             <div class="table-responsive">
               <table id="list_categories" class="table table-striped table-bordered">
                 <thead>
@@ -28,7 +39,7 @@
                     <td>{{$categorie->name}}</td>
                     <td>{{$categorie->status}}</td>
                     <td>
-                      <form action='' method="POST" style='display:inline-block'>
+                      <form action='{{url("dashboard/categorie/$categorie->id")}}' method="POST" style='display:inline-block'>
                         @method("delete")
                         @csrf
                         <button class="btn btn-danger" onClick="return confirm('yakin ?')"><i class="fas fa-trash"></i></button>
