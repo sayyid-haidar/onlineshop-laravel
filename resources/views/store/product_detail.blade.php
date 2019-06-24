@@ -21,11 +21,11 @@
                     <div class="btn btn-primary btn-sm">Top List</div>
                     <div class="btn btn-primary btn-sm">Indonesia</div>
                 </div>
-                <h2 class="card-title pt-3">Coffee Gayo</h2>
-                <p class="card-text">Nulla tempor dolor culpa laborum aliqua. Culpa ad nostrud Lorem ullamco consequat et officia. Cillum consequat aute esse anim. Eu enim nisi aliqua eu labore est ex proident officia laboris. Qui mollit eu magna in exercitation consequat. Duis ea duis ad non ad commodo culpa deserunt minim ea commodo ea sint.</p>
+                <h2 class="card-title pt-3">{{$data->name}}</h2>
+                <p class="card-text">{{$data->description}}</p>
                 <hr>
                 <div class="card-price">
-                        <h3 class="card-title">Rp, 50.000/kg </h3>
+                        <h3 class="card-title">Rp, {{$data->price}}/kg </h3>
                         <div class="row">
                                 <div class="col-8">
                                     <input type="text" class="form-control border-dark" placeholder="5 KG">

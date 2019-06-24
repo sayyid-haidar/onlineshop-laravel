@@ -15,7 +15,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
         $products = Product::orderBy("id", "DESC")->paginate(3);
@@ -79,7 +79,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return 'ini function show';
+        $data = Product::find($id);
+        return view('store.product_detail', compact('data'));
     }
 
     /**
@@ -103,7 +104,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id); 
+        $product = Product::find($id);
         $product->code = $request->input("code_product");
         $product->name =  $request->input("nama_product");
         $product->varian =  $request->input("varian");
