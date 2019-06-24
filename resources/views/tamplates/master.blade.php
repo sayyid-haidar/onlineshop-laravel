@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="{{url('/favicon.ico')}}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -39,28 +40,29 @@
     </footer>
     @endif
 <script>
-    $(document).ready(function(){
+    // $(document).ready(function(){
 
-        fetch_product_data();
+    //     fetch_product_data();
         
-        function fetch_product_data(query = ''){
-            $.ajax({
-                url : "{{url('/product/action')}}",
-                method : "GET",
-                data : {query:query},
-                dataType : 'json',
-                success : function(data){
-                    $('tbody').html(data.table_data);
-                    $('#total_records').text(data.total_data);
+    //     function fetch_product_data(query = ''){
+    //         $.ajax({
+    //             url : "{{url('/product/action')}}",
+    //             method : "GET",
+    //             data : {query:query},
+    //             dataType : 'json',
+    //             success : function(data){
+    //                 $('tbody').html(data.table_data);
+    //                 $('#total_records').text(data.total_data);
                     
-                }
-            });
-        }
-        $(document).on('keyup', '#search', function(){
-            var query = $(this).val();
-            fetch_product_data(query); 
-        });
-    });
+    //             }
+    //         });
+    //     }
+    //     $(document).on('keyup', '#search', function(){
+    //         var query = $(this).val();
+    //         fetch_product_data(query); 
+    //     });
+    // });
+    
 
 </script>
 

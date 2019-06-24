@@ -17,6 +17,7 @@ Route::get('/aboute', 'StoreController@aboute');
 Route::get('/product/detail', function () {
     return view('store.product_detail');
 });
+Route::get('/product/search', 'StoreController@search');
 // Route::get('product/detail/$product->id', function () {
 //     return view('store.product_detail');
 // });
