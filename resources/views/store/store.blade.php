@@ -3,7 +3,7 @@
 @section('title', 'Store')
 
 @php
-    use App\Categorie;
+use App\Categorie;
 @endphp
 
 @section('style')
@@ -34,7 +34,8 @@
         flex: 0 0 auto;
         margin: 5px;
     }
-    .JumboGambar{
+
+    .JumboGambar {
         background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
         background-size: cover;
         font-family: 'Lobster', cursive;
@@ -43,6 +44,7 @@
         text-shadow: 3px 2px 1px black;
         text-align: center;
     }
+
     /* Penambahan Style Jumbotron */
     @media(min-width: 768px) {
         .header_cards {
@@ -57,14 +59,15 @@
             height: 22rem;
             margin: 5px;
         }
-        .JumboGambar{
-        background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
-        background-size: cover;
-        font-family: 'Lobster', cursive;
-        font-size: 24px;
-        font-variant: inherit;
-        text-shadow: 3px 2px 1px black;
-        text-align: center;
+
+        .JumboGambar {
+            background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
+            background-size: cover;
+            font-family: 'Lobster', cursive;
+            font-size: 24px;
+            font-variant: inherit;
+            text-shadow: 3px 2px 1px black;
+            text-align: center;
         }
     }
 
@@ -74,7 +77,7 @@
 @section('content')
 {{-- Buat Pemanggilan Data Dari database --}}
 @php
-    $categories = Categorie::all();
+$categories = Categorie::all();
 @endphp
 {{-- Buat Pemanggilan Data Dari database --}}
 <header class="pt-3">
@@ -98,14 +101,13 @@
 {{-- CARD --}}
 <div class="row">
     @for($i=0;$i<1;$i++) 
-     @foreach ($categories as $categorie)
-        <div class="col-6 col-md-3">
-        <div class="jumbotron JumboGambar bg-primary" style="color:yellow;">{{ $categorie->name }}</div>
+    @foreach ($categories as $categorie) <div class="col-6 col-md-3">
+        <div class="jumbotron JumboGambar bg-primary owl-carousel owl-theme" style="color:yellow;">
+        {{ $categorie->name }}</div>
         </div>
-     @endforeach
-@endfor
+    @endforeach
+    @endfor
 </div>
-
 
 <div class="row">
     <div class="col-6 col-md-6">
@@ -125,17 +127,37 @@
 {{-- card_product --}}
 
 <div class="cards_wrapper">
-    @for($i=0;$i<4;$i++)
-        <div class="card_product">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSZLsEuhDI522ip630fc4OtsNUhFw0YcuS6XB3AWsOslPYElbh"
-                class="card-img-top" alt="coffe">
-            <div class="card-body">
-                <p class="card-text">Coffee</p>
-                <h3 class="card-title">Toraja Coffee</h3>
-                <a href="{{url('/product/detail')}}" class="btn btn-primary">Buy Here!</a>
-            </div>
+    @for($i=0;$i<4;$i++) <div class="card_product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSZLsEuhDI522ip630fc4OtsNUhFw0YcuS6XB3AWsOslPYElbh"
+            class="card-img-top" alt="coffe">
+        <div class="card-body">
+            <p class="card-text">Coffee</p>
+            <h3 class="card-title">Toraja Coffee</h3>
+            <a href="{{url('/product/detail')}}" class="btn btn-primary">Buy Here!</a>
         </div>
+</div>
 @endfor
 </div>
 
+@endsection
+@section('script')
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 5
+            }
+        }
+    });
+
+</script>
 @endsection
