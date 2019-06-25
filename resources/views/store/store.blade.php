@@ -54,7 +54,7 @@
 
         .card_product {
             width: 12rem;
-            height: 22rem;
+            height: 20rem;
             margin: 5px;
         }
     }
@@ -88,7 +88,7 @@
 
 {{-- CARD --}}
 <div class="row">
-    @for($i=0;$i<1;$i++) 
+    @for($i=0;$i<1;$i++)
      @foreach ($categories as $categorie)
         <div class="col-6 col-md-3">
         <div class="jumbotron JumboGambar bg-primary" style="color:yellow;">{{ $categorie->name }}</div>
@@ -119,11 +119,16 @@
     @for($i=0;$i<4;$i++)
         <div class="card_product">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSZLsEuhDI522ip630fc4OtsNUhFw0YcuS6XB3AWsOslPYElbh"
-                class="card-img-top" alt="coffe">
+                class="card-img-top" alt="coffe" >
             <div class="card-body">
-                <p class="card-text">Coffee</p>
-                <h3 class="card-title">Toraja Coffee</h3>
-                <a href="{{url('/product/detail')}}" class="btn btn-primary">Buy Here!</a>
+                <p class="card-text my-0">Coffee</p>
+                <a href="{{url('/product/detail')}}" class="card-title h4">Toraja Coffee</a>
+                <form action="/product/1" method="POST" class="pt-4">
+                    @csrf
+                    @method('Post')
+                    {{-- nanti v1 kita ganti sebagai id --}}
+                    <button type="post" class="btn btn-primary btn-block">Beli</button>
+                </form>
             </div>
         </div>
 @endfor

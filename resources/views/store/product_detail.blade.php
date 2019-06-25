@@ -37,7 +37,12 @@
                             </div>
                         <h6 class="card-subtitle text-muted pt-3">Total Pesanan</h6>
                         <h4 class="card-title">Rp, 500.000 <small class="text-muted">( 50.000 x 5 )</small> </h4>
-                        <button type="button" class="btn btn-danger btn-block">Bayar</button>
+                        <form action="/product/v1" method="POST">
+                            @csrf
+                            @method('POST')
+                            // nanti v1 kita ganti sebagai id
+                            <button type="post" class="btn btn-danger btn-block">Beli</button>
+                        </form>
                 </div>
             </div>
         </div>

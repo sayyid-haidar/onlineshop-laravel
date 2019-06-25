@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'StoreController@index');
+Route::resource('/', 'StoreController');
+Route::post('/product/{id}', 'StoreController@addCart');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
 Route::get('/product/detail', function(){
