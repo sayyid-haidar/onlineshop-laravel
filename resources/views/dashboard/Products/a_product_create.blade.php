@@ -14,17 +14,17 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="kategori">Code Product</label>
-                <input type="text" class="form-control form-control-lg" name="code_product" id="code_product" placeholder="Masukan Code Product">
-                @error("code")
+                <input type="text" class="form-control form-control-lg" name="code_product" id="code_product" placeholder="Masukan Code Product" required="">
+                {{-- @error("code")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
-                @enderror
+                @enderror --}}
               </div>
               <div class="form-group">
                 <label for="nama_buku">Nama Product</label>
-                <input type="text" class="form-control form-control-lg" name="nama_product" id="nama_product" placeholder="Masukan Nama Product">
-                @error("name")
+                <input type="text" class="form-control form-control-lg" name="nama_product" id="nama_product" placeholder="Masukan Nama Product" required="">
+                {{-- @error("name")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
-                @enderror
+                @enderror --}}
               </div>
               <div class="form-group">
                 <label for="penerbit">Varian</label>
@@ -47,7 +47,7 @@
                     <label for="harga">Price</label>
                     <div class="row">
                       <div class="col-md-12">
-                        <input type="text" class="form-control" name="price" id="price" aria-describedby="price" placeholder="Harga Buku">
+                        <input type="text" class="form-control" name="price" id="price" aria-describedby="price" placeholder="Masukan Harganya">
                       </div>
                     </div>
                     @error("price")
@@ -58,7 +58,7 @@
                     <label for="stok">Stock</label>
                     <div class="row">
                       <div class="col-md-12">
-                        <input type="text" class="form-control" name="stock" id="stock" aria-describedby="stock" placeholder="Stok Buku">
+                        <input type="text" class="form-control" name="stock" id="stock" aria-describedby="stock" placeholder="Jumlah Stock">
                       </div>
                     </div>
                     @error("stock")
@@ -91,10 +91,7 @@
                 <div class="row">
                   <div class="col-md-8">
                     <input type="file" name="image" class="form-control-sm" id="image" onchange="readURL(this);" >
-                    &nbsp;&nbsp;<i><small id="cover" class="form-text text-muted mt-0">**Ukuran file cover Maks. 10 MB;.</small>
-                    @error("image")
-                  <div class="badge badge-danger"><small>{{$message}}</small></div>
-                @enderror</i>
+                    &nbsp;&nbsp;<i><small id="cover" class="form-text text-muted mt-0">**Ukuran file cover Maks. 10 MB;.</small></i>
                   </div>
                 </div>
               </div>
