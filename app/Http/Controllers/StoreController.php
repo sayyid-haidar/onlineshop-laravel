@@ -15,7 +15,7 @@ class StoreController extends Controller
     public function index()
     {
         $list_categories = Categorie::all();
-        return view("store.store", compact('list_categories'));
+        return view("store.index", compact('list_categories'));
     }
 
     public function product()

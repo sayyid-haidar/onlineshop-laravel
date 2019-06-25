@@ -19,7 +19,7 @@ class TemplateController extends Controller
     public function index()
     {
         $template = Template::paginate(10);
-        return view('dashboard.template/a_template', compact('template'));
+        return view('dashboard.template.index', compact('template'));
     }
 
     /**
@@ -29,7 +29,7 @@ class TemplateController extends Controller
      */
     public function create()
     {
-        return view('dashboard.template.a_template_create');
+        // return view('dashboard.template.create');
     }
 
     /**
@@ -40,13 +40,13 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        $template =  new Template;
-        $template->name = $request->input('name');
-        $template->folder = $request->input('folder');
-        $template->selected = $request->input('selected');
-        $template->save();
-        Session::flash("success", "berhasil menyimpan data");
-        return redirect()->to("dashboard/template");
+        // $template =  new Template;
+        // $template->name = $request->input('name');
+        // $template->folder = $request->input('folder');
+        // $template->selected = $request->input('selected');
+        // $template->save();
+        // Session::flash("success", "berhasil menyimpan data");
+        // return redirect()->to("dashboard/template");
     }
 
     /**
@@ -69,7 +69,7 @@ class TemplateController extends Controller
     public function edit($id)
     {
         $template = Template::find($id);
-        return view('dashboard/template.a_template_edit', compact('template'));
+        return view('dashboard/template.edit', compact('template'));
     }
 
     /**
@@ -107,6 +107,13 @@ class TemplateController extends Controller
     {
         Template::find($id)->delete();
         Session::flash("success", "berhasil dihapus");
+        return back();
+    }
+    public function selected($id)
+    {
+        $template = Template::find($id);
+        $template->selected = 1;
+        Session::flash('success', 'berhasil merubah template');
         return back();
     }
 }

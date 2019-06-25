@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Storage;
 use App\Product;
 use App\Categorie;
@@ -19,11 +20,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy("id", "DESC")->paginate(3);
-        return view("dashboard.Products.a_product", compact('products'));
-    }
-    public function tabel()
-    {
-        return view( 'dashboard.Products.a_tabel');
+        return view("dashboard.Products.index", compact('products'));
     }
 
     /**
@@ -34,7 +31,7 @@ class ProductController extends Controller
     public function create()
     {
         $list_categories = Categorie::all();
-        return view("dashboard.Products.a_product_create", compact('list_categories'));
+        return view("dashboard.Products.create", compact('list_categories'));
     }
 
     /**
@@ -66,7 +63,7 @@ class ProductController extends Controller
         //upload file to storage
         $path = $request->file('image')->storeAs('public/product', $product->id . '.jpg');
         $product->image = $product->id . '.jpg';
-        $product->save(); 
+        $product->save();
         Session::flash("success", "berhasil Menambah Product");
         return redirect()->to("dashboard/product");
     }
@@ -80,7 +77,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $data = Product::find($id);
-        return view('store.product_detail', compact('data'));
+        return view('store.detail', compact('data'));
     }
 
     /**
@@ -92,7 +89,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view( "dashboard.Products.a_product_edit", compact('product'));
+        return view("dashboard.Products.edit", compact('product'));
     }
 
     /**
@@ -109,8 +106,8 @@ class ProductController extends Controller
         $product->name =  $request->input("nama_product");
         $product->varian =  $request->input("varian");
         $product->price =  $request->input("price");
-        $product->stock =  $request->input("stock"); 
-        $product->save() ;
+        $product->stock =  $request->input("stock");
+        $product->save();
         Session::flash("success", "berhasil Update Prodduct");
         return redirect()->to("dashboard/product");
     }
@@ -125,6 +122,6 @@ class ProductController extends Controller
     {
         Product::find($id)->delete();
         Session::flash("success", "berhasil Menghapus Product");
-        return redirect()->to("dashboard/product"); 
+        return redirect()->to("dashboard/product");
     }
 }

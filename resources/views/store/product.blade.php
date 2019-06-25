@@ -75,7 +75,7 @@
     <div class="cards_product_list">
         @foreach ($product as $item)
         <div class="card_product">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSZLsEuhDI522ip630fc4OtsNUhFw0YcuS6XB3AWsOslPYElbh"
+                <img src="{{url('')}}/storage/product/{{$item->image}}" style="width : 110px;"
                     class="card-img-top" alt="coffe">
                 <div class="card-body">
                     <p class="card-text">{{$item->name}}</p>
@@ -100,7 +100,7 @@
         
         @endfor --}}
     </div>
-<script text="text/javascript">
+{{-- <script text="text/javascript">
 var keyword = document.getElementById('keyword');
 var tombolCari = document.getElementById('tombol-cari');
 var container = document.getElementById('container');
@@ -120,7 +120,7 @@ keyword.addEventListener('keyup', function () {
 });
 
 
-</script>
+</script> --}}
 
 {{-- <script text="text/javascript">
 
