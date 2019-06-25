@@ -4,7 +4,7 @@
     text-align: right;
   }
 </style>
-@extends('tamplates.admin')
+@extends('templates.admin')
 
 @section('title', 'Dashboard')
 

@@ -38,6 +38,9 @@ Route::prefix('/dashboard')->group(function () {
     Route::get('/create', 'TemplateController@create');
     Route::get('/insert-insert', 'TemplateController@store');
 
+    Route::get("/template", "Admin\TemplateController@index");
+    Route::get('/template/{id}/select', 'Admin\TemplateController@select');
     Route::post('/template/{id}/edit', 'TemplateController@edit');
     Route::post('/template/{id}/edit', 'TemplateController@edit');
+    
 });

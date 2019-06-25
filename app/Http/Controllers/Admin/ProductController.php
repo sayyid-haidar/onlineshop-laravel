@@ -11,47 +11,31 @@ use Session;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function index()
     {
         $products = Product::orderBy("id", "DESC")->paginate(3);
         return view("dashboard.Products.index", compact('products'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Method Untuk Memanggil Route Form
     public function create()
     {
         $list_categories = Categorie::all();
         return view("dashboard.Products.create", compact('list_categories'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Method Simpan dari Form Jangan Lupa CSRF
     public function store(Request $request)
-    {
+    {   
+        // Memvalidasi Data di Form 
         $this->validate($request, [
-            // 'code' => 'required|unique:products,code',
-            // 'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000',
+            'code_product' => 'required|unique:products,code',
+            'nama_product' => 'required',
             'varian' => 'required',
             'stock' => 'required|integer',
             'price' => 'required|integer',
-            'categorie_id' => 'required|integer',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000'
+            'categorie_id' => 'required|integer'
         ]);
-
+        // Menyimpan Ke database
         $product = new Product;
         $product->code = $request->input("code_product");
         $product->name =  $request->input("nama_product");
@@ -60,45 +44,26 @@ class ProductController extends Controller
         $product->stock =  $request->input("stock");
         $product->categorie_id  = $request->input("categorie_id");
         $product->save();
-        //upload file to storage
+        //upload file to Folder storage
         $path = $request->file('image')->storeAs('public/product', $product->id . '.jpg');
         $product->image = $product->id . '.jpg';
         $product->save();
         Session::flash("success", "berhasil Menambah Product");
         return redirect()->to("dashboard/product");
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Menampilkan Product
     public function show($id)
     {
         $data = Product::find($id);
         return view('store.detail', compact('data'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Menampilkan Tampilan dari Database ke Form Untuk Edit
     public function edit($id)
     {
         $product = Product::find($id);
         return view("dashboard.Products.edit", compact('product'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Method simpan Setelah di ambil dari edit Update
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
@@ -111,13 +76,7 @@ class ProductController extends Controller
         Session::flash("success", "berhasil Update Prodduct");
         return redirect()->to("dashboard/product");
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Method Delete
     public function destroy($id)
     {
         Product::find($id)->delete();

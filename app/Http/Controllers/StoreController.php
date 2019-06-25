@@ -6,16 +6,24 @@ use App\Categorie;
 
 use Illuminate\Http\Request;
 use App\Product;
-use App\Store;
+use App\Template;
 use DB;
 use Session;
 
+
 class StoreController extends Controller
 {
+    public function __construct()
+    {
+        //load all variable categories to all method 
+        /*View::share('categories',Categorie::all());*/
+        $this->template = Template::where("selected", '1')->first();
+    }
     public function index()
     {
-        $list_categories = Categorie::all();
-        return view("store.index", compact('list_categories'));
+        // $list_categories = Categorie::all();
+        // return view("store.index", compact('list_categories'));
+        return view('templates.' . $this->template->folder . '.index');
     }
 
     public function product()
