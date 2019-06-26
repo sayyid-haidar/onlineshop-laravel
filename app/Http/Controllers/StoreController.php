@@ -16,7 +16,7 @@ class StoreController extends Controller
     public function __construct()
     {
         //load all variable categories to all method 
-        /*View::share('categories',Categorie::all());*/
+        // View::share('categories', Categorie::all());
         $this->template = Template::where("selected", '1')->first();
     }
     public function index()
@@ -29,7 +29,7 @@ class StoreController extends Controller
     public function product()
     {
         $product = Product::All();
-        return view('store.product', compact('product'));
+        return view('templates.' . $this->template->folder . '.product', compact('product'));
     }
     public function search(Request $request)
     {
@@ -51,11 +51,23 @@ class StoreController extends Controller
 
     public function aboute()
     {
-        return view('store.aboute');
+        return view('templates.' . $this->template->folder . '.about');
     }
     // `public function show($id)
     // {
     //     $product = Store::find($id);
     //     return view('store.product_detail', compact('product'));
     // }`
+    public function contact()
+    {
+        return view('templates.' . $this->template->folder . '.contact');
+    }
+    public function cart()
+    {
+        return view('templates.' . $this->template->folder . '.cart');
+    }
+    public function checkout()
+    {
+        return view('templates.' . $this->template->folder . '.checkout');
+    }
 }

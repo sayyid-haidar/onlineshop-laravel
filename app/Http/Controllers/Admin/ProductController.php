@@ -24,12 +24,12 @@ class ProductController extends Controller
     }
     // Method Simpan dari Form Jangan Lupa CSRF
     public function store(Request $request)
-    {   
+    {
         // Memvalidasi Data di Form 
         $this->validate($request, [
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000',
-            'code_product' => 'required|unique:products,code',
-            'nama_product' => 'required',
+            'name' => 'required',
+            'code' => 'required|unique:products,code',
             'varian' => 'required',
             'stock' => 'required|integer',
             'price' => 'required|integer',
@@ -37,8 +37,8 @@ class ProductController extends Controller
         ]);
         // Menyimpan Ke database
         $product = new Product;
-        $product->code = $request->input("code_product");
-        $product->name =  $request->input("nama_product");
+        $product->code = $request->input("code");
+        $product->name =  $request->input("name");
         $product->varian =  $request->input("varian");
         $product->price =  $request->input("price");
         $product->stock =  $request->input("stock");

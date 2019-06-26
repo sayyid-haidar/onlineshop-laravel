@@ -1,5 +1,5 @@
 @section('title', 'Dashboard')
-@extends('tamplates.admin')
+@extends('templates.admin')
 @section('content')
 
 <section class="pb-4">
@@ -12,15 +12,15 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="code_product">Code Product</label>
-                <input type="text" class="form-control form-control-lg" name="code_product" id="code_product" placeholder="Masukan Code Product">
-                @error("code_product")
+                <input type="text" class="form-control form-control-lg" name="code" id="code" placeholder="Masukan Code Product">
+                @error("code")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
                 @enderror
               </div>
               <div class="form-group">
                 <label for="nama_product">Nama Product</label>
-                <input type="text" class="form-control form-control-lg" name="nama_product" id="nama_product" placeholder="Masukan Nama Product">
-                @error("nama_product")
+                <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Masukan Nama Product">
+                @error("name")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
                 @enderror
               </div>

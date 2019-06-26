@@ -17,6 +17,10 @@ Route::get('/aboute', 'StoreController@aboute');
 Route::get('/product/detail', function () {
     return view('store.product_detail');
 });
+Route::get('/contact', 'StoreController@contact');
+Route::get('/cart', 'StoreController@cart');
+Route::get('/checkout', 'StoreController@checkout');
+
 Route::get('/product/search', 'StoreController@search');
 // Route::get('product/detail/$product->id', function () {
 //     return view('store.product_detail');
@@ -42,5 +46,4 @@ Route::prefix('/dashboard')->group(function () {
     Route::get('/template/{id}/select', 'Admin\TemplateController@select');
     Route::post('/template/{id}/edit', 'TemplateController@edit');
     Route::post('/template/{id}/edit', 'TemplateController@edit');
-    
 });
