@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Template;
 use App\User;
 use Session; 
+use DB;
 
 
 class TemplateController extends Controller
@@ -18,8 +19,13 @@ class TemplateController extends Controller
     }
     public function select($id)
     {
-        $template = Template::find($id);
-        $template->selected = 1;
+        // Panggil Database Table yang bernama Tempaltes dan cari data Selected 1 dan rubah menjadi
+        //  Selected 0 dan Fungsi update() berguna langsung menyimpan
+        $template = DB::table('templates')->where('selected', '1')->update(['selected'=>'0']);
+
+        $template = Template::where('id', $id)->first();
+        $template-> selected = '1';
+        $template->save();
         Session::flash('success', 'berhasil merubah template');
         return back();
     }

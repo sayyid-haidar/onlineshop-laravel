@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="col-md-6 order-1 align-self-end">
-        <img src="images/model_3.png" alt="Image" class="img-fluid">
+        <img src="{{asset('templates/template_bachtiar/images/model_3.png')}}" alt="Image" class="img-fluid">
       </div>
     </div>
   </div>
@@ -27,18 +27,18 @@
       <div class="col-lg-8">
         <div class="product-item sm-height full-height bg-gray">
           <a href="#" class="product-category">Women <span>25 items</span></a>
-          <img src="images/model_4.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/model_4.png')}}" alt="Image" class="img-fluid">
         </div>
       </div>
       <div class="col-lg-4">
         <div class="product-item sm-height bg-gray mb-4">
           <a href="#" class="product-category">Men <span>25 items</span></a>
-          <img src="images/model_5.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/model_5.png')}}" alt="Image" class="img-fluid">
         </div>
 
         <div class="product-item sm-height bg-gray">
           <a href="#" class="product-category">Shoes <span>25 items</span></a>
-          <img src="images/model_6.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/model_6.png')}}" alt="Image" class="img-fluid">
         </div>
       </div>
     </div>
@@ -57,14 +57,14 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 item-entry mb-4">
         <a href="#" class="product-item md-height bg-gray d-block">
-          <img src="images/prod_2.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/prod_2.png')}}" alt="Image" class="img-fluid">
         </a>
         <h2 class="item-title"><a href="#">Gray Shoe</a></h2>
         <strong class="item-price">$20.00</strong>
       </div>
       <div class="col-lg-4 col-md-6 item-entry mb-4">
         <a href="#" class="product-item md-height bg-gray d-block">
-          <img src="images/prod_3.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/prod_3.png')}}" alt="Image" class="img-fluid">
         </a>
         <h2 class="item-title"><a href="#">Blue Shoe High Heels</a></h2>
         <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -72,7 +72,7 @@
 
       <div class="col-lg-4 col-md-6 item-entry mb-4">
         <a href="#" class="product-item md-height bg-gray d-block">
-          <img src="images/model_5.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/model_5.png')}}" alt="Image" class="img-fluid">
         </a>
         <h2 class="item-title"><a href="#">Denim Jacket</a></h2>
         <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -88,7 +88,7 @@
       </div>
       <div class="col-lg-4 col-md-6 item-entry mb-4">
         <a href="#" class="product-item md-height bg-gray d-block">
-          <img src="images/prod_1.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/prod_1.png')}}" alt="Image" class="img-fluid">
         </a>
         <h2 class="item-title"><a href="#">Leather Green Bag</a></h2>
         <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -103,14 +103,14 @@
 
       <div class="col-lg-4 col-md-6 item-entry mb-4">
         <a href="#" class="product-item md-height bg-gray d-block">
-          <img src="images/model_1.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/model_1.png')}}" alt="Image" class="img-fluid">
         </a>
         <h2 class="item-title"><a href="#">Smooth Cloth</a></h2>
         <strong class="item-price"><del>$46.00</del> $28.00</strong>
       </div>
       <div class="col-lg-4 col-md-6 item-entry mb-4">
         <a href="#" class="product-item md-height bg-gray d-block">
-          <img src="images/model_7.png" alt="Image" class="img-fluid">
+          <img src="{{asset('templates/template_bachtiar/images/model_7.png')}}" alt="Image" class="img-fluid">
         </a>
         <h2 class="item-title"><a href="#">Yellow Jacket</a></h2>
         <strong class="item-price">$58.00</strong>
@@ -133,7 +133,7 @@
           <div class="item">
             <div class="item-entry">
               <a href="#" class="product-item md-height bg-gray d-block">
-                <img src="images/model_1.png" alt="Image" class="img-fluid">
+                <img src="{{asset('templates/template_bachtiar/images/model_1.png')}}" alt="Image" class="img-fluid">
               </a>
               <h2 class="item-title"><a href="#">Smooth Cloth</a></h2>
               <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -149,7 +149,7 @@
           <div class="item">
             <div class="item-entry">
               <a href="#" class="product-item md-height bg-gray d-block">
-                <img src="images/prod_3.png" alt="Image" class="img-fluid">
+                <img src="{{asset('templates/template_bachtiar/images/prod_3.png')}}" alt="Image" class="img-fluid">
               </a>
               <h2 class="item-title"><a href="#">Blue Shoe High Heels</a></h2>
               <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -166,7 +166,7 @@
           <div class="item">
             <div class="item-entry">
               <a href="#" class="product-item md-height bg-gray d-block">
-                <img src="images/model_5.png" alt="Image" class="img-fluid">
+                <img src="{{asset('templates/template_bachtiar/images/model_5.png')}}" alt="Image" class="img-fluid">
               </a>
               <h2 class="item-title"><a href="#">Denim Jacket</a></h2>
               <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -184,7 +184,7 @@
           <div class="item">
             <div class="item-entry">
               <a href="#" class="product-item md-height bg-gray d-block">
-                <img src="images/prod_1.png" alt="Image" class="img-fluid">
+                <img src="{{asset('templates/template_bachtiar/images/prod_1.png')}}" alt="Image" class="img-fluid">
               </a>
               <h2 class="item-title"><a href="#">Leather Green Bag</a></h2>
               <strong class="item-price"><del>$46.00</del> $28.00</strong>
@@ -200,7 +200,7 @@
           <div class="item">
             <div class="item-entry">
               <a href="#" class="product-item md-height bg-gray d-block">
-                <img src="images/model_7.png" alt="Image" class="img-fluid">
+                <img src="{{asset('templates/template_bachtiar/images/model_7.png')}}" alt="Image" class="img-fluid">
               </a>
               <h2 class="item-title"><a href="#">Yellow Jacket</a></h2>
               <strong class="item-price">$58.00</strong>
@@ -232,7 +232,7 @@
         </div>
       </div>
       <div class="col-md-6 order-1 align-self-end">
-        <img src="images/model_6.png" alt="Image" class="img-fluid">
+        <img src="{{asset('templates/template_bachtiar/images/model_6.png')}}" alt="Image" class="img-fluid">
       </div>
     </div>
   </div>

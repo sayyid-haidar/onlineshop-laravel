@@ -53,11 +53,11 @@ class StoreController extends Controller
     {
         return view('templates.' . $this->template->folder . '.about');
     }
-    // `public function show($id)
+    // public function show($id)
     // {
     //     $product = Store::find($id);
     //     return view('store.product_detail', compact('product'));
-    // }`
+    // }
     public function contact()
     {
         return view('templates.' . $this->template->folder . '.contact');
@@ -69,5 +69,10 @@ class StoreController extends Controller
     public function checkout()
     {
         return view('templates.' . $this->template->folder . '.checkout');
+    }
+    public function detail($id)
+    {
+        $detail = Product::find($id);
+        return view('templates.' . $this->template->folder . '.product_detail', compact('detail'));
     }
 }

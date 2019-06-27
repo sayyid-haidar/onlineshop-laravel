@@ -2,6 +2,22 @@
 
 @section('content')
 {{------------------ Free Shiping , Free Returns, Customer Support  ----------------}}
+<div class="site-blocks-cover" style="background-image: url({{asset('templates/template_ismail/images/hero_1.jpg')}});" data-aos="fade">
+      <div class="container">
+        <div class="row align-items-start align-items-md-center justify-content-end">
+          <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
+            <h1 class="mb-2">Finding Your Perfect Shoes</h1>
+            <div class="intro-text text-center text-md-left">
+              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
+              <p>
+                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 <div class="site-section site-section-sm site-blocks-1">
   <div class="container">
     <div class="row">
@@ -165,7 +181,7 @@
     </div>
     <div class="row align-items-center">
       <div class="col-md-12 col-lg-7 mb-5">
-        <a href="#"><img src="{{asset('templates/template_ismail/images/blog_1.jpg')}} alt="Image placeholder" class="img-fluid rounded"></a>
+        <a href="#"><img src="{{asset('templates/template_ismail/images/blog_1.jpg')}}" alt="Image placeholder" class="img-fluid rounded"></a>
       </div>
       <div class="col-md-12 col-lg-5 text-center pl-md-5">
         <h2><a href="#">50% less in all items</a></h2>

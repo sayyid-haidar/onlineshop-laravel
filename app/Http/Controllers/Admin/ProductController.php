@@ -79,8 +79,19 @@ class ProductController extends Controller
     // Method Delete
     public function destroy($id)
     {
-        Product::find($id)->delete();
-        Session::flash("success", "berhasil Menghapus Product");
-        return redirect()->to("dashboard/product");
+        // hapus file
+        $gambar = Product::where('id', $id)->first();
+        Storage::delete('product/' . $gambar->image);
+
+        $gambar->delete();
+        // echo 'storage/product/' . $gambar->image;
+        // hapus data
+        // Product::where('id', $id)->delete();
+        // Session::flash("success", "berhasil Menghapus Product");
+        // return redirect()->to( "dashboard/product");
+
+        // Product::find($id)->delete();
+        
+        // return redirect()->to("dashboard/product");
     }
 }

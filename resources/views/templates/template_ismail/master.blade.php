@@ -4,7 +4,8 @@
     <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    {{-- Font Google --}}
+    <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="{{asset('templates/template_ismail/fonts/icomoon/style.css')}}">
 
@@ -13,10 +14,10 @@
     <link rel="stylesheet" href="{{asset('templates/template_ismail/css/jquery-ui.css')}}">
     <link rel="stylesheet" href="{{asset('templates/template_ismail/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('templates/template_ismail/css/owl.theme.default.min.css')}}">
-
+    {{-- Style CSS --}}
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <link rel="stylesheet" href="{{asset('templates/template_ismail/css/aos.css')}}">
-
     <link rel="stylesheet" href="{{asset('templates/template_ismail/css/style.css')}}">
     
   </head>
@@ -37,7 +38,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
+                <a href="index.html" class="js-logo-clone">Store Coffe</a>
               </div>
             </div>
 
@@ -60,58 +61,38 @@
           </div>
         </div>
       </div> 
+      @php
+      use App\Categorie;
+      $categories = Categorie::all();
+      @endphp
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
-              <a href="index.html">Home</a>
-              <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Sub Menu</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Menu One</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                  </ul>
-                </li>
-              </ul>
+            <li class="active">
+              <a href="{{ url('/') }}">Home</a>
             </li>
             <li class="has-children">
-              <a href="about.html">About</a>
+              <a href="#">Categorie</a>
               <ul class="dropdown">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
+                @foreach ( $categories as $categorie )
+                  <li><a href="#">{{ $categorie->name }}</a></li>
+                @endforeach
               </ul>
             </li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{url('product')}}">Product</a></li>
+            <li><a href="{{url('aboute')}}">About</a></li>
+            <li><a href="{{url('contact')}}">Contact</a></li>
+            <li>
+              @auth
+              <a style="color:black" class="btn btn-outline-danger " href="{{ url('/logout') }}">Logout</a>
+              @else
+              <a style="color:black" class="btn btn-outline-primary" href="{{ route('login') }}">Login</a>
+              @endauth
+            </li>
           </ul>
         </div>
       </nav>
     </header>
-
-    <div class="site-blocks-cover" style="background-image: url({{asset('templates/template_ismail/images/hero_1.jpg')}});" data-aos="fade">
-      <div class="container">
-        <div class="row align-items-start align-items-md-center justify-content-end">
-          <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-            <h1 class="mb-2">Finding Your Perfect Shoes</h1>
-            <div class="intro-text text-center text-md-left">
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
-              <p>
-                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     {{-------------------------- INI CONTENT ----------------------------}}
       @yield('content')
     {{-------------------------- AKHIR CONTENT -------------------------------}}

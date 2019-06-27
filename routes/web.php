@@ -14,9 +14,7 @@
 Route::get('/', 'StoreController@index');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
-Route::get('/product/detail', function () {
-    return view('store.product_detail');
-});
+Route::get('/product/{id}', 'StoreController@detail')->name('product');
 Route::get('/contact', 'StoreController@contact');
 Route::get('/cart', 'StoreController@cart');
 Route::get('/checkout', 'StoreController@checkout');
