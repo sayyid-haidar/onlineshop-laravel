@@ -16,6 +16,7 @@
 
     <link href="{{url('vendor/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+
     <title>@yield('title')</title>
 
 
@@ -384,6 +385,7 @@
         <!-- Page level custom scripts -->
         <script src="{{url('vendor/js/chart-area-demo.js')}}"></script>
         <script src="{{url('vendor/js/chart-pie-demo.js')}}"></script>
+         <script src="{{ url('') }}/js/myscript.js" type="text/javascript"></script>
 </body>
 
 </html>

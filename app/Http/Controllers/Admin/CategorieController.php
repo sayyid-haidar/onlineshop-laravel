@@ -17,7 +17,7 @@ class CategorieController extends Controller
     public function index()
     {
         $list_categories = Categorie::paginate(5);
-        return view("dashboard.Categorie.a_categorie", compact('list_categories'));
+        return view("dashboard.Categorie.index", compact('list_categories'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategorieController extends Controller
 
     public function create()
     {
-        return view('dashboard.Categorie.a_categorie_create');
+        return view('dashboard.Categorie.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class CategorieController extends Controller
     public function edit($id)
     {
         $categorie = Categorie::find($id);
-        return view('dashboard.Categorie.a_categorie_edit', compact('categorie'));
+        return view('dashboard.Categorie.edit', compact('categorie'));
     }
 
     /**

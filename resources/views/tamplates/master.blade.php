@@ -6,11 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="{{url('/favicon.ico')}}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     {{-- Link Font Google --}}
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    {{-- Link Owl Carousel --}}
+    <link rel="stylesheet" href="{{ asset('owlcarousel/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('owlcarousel/assets/owl.theme.green.min.css') }}">
 
     <title>@yield('title')</title>
 
@@ -46,15 +50,15 @@
 
     </style>
 </head>
-
 <body>
 
     <div class="container">
         @include('components.navbar')
+              <tbody>
+                    @yield('content')
+              </tbody>
+          </div>
 
-
-
-        @yield('content')
     </div>
 
     @if( Route::is('dashboard','login','register'))
@@ -80,7 +84,32 @@
         </div>
     </footer>
     @endif
+<script>
+    // $(document).ready(function(){
 
+    //     fetch_product_data();
+        
+    //     function fetch_product_data(query = ''){
+    //         $.ajax({
+    //             url : "{{url('/product/action')}}",
+    //             method : "GET",
+    //             data : {query:query},
+    //             dataType : 'json',
+    //             success : function(data){
+    //                 $('tbody').html(data.table_data);
+    //                 $('#total_records').text(data.total_data);
+                    
+    //             }
+    //         });
+    //     }
+    //     $(document).on('keyup', '#search', function(){
+    //         var query = $(this).val();
+    //         fetch_product_data(query); 
+    //     });
+    // });
+    
+
+</script>
 
 
     <!-- Optional JavaScript -->
@@ -94,6 +123,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="{{asset('/owlcarousel/owl.carousel.min.js')}}"></script>
 
     @yield('script')
 </body>

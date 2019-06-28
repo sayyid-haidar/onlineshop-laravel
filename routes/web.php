@@ -15,10 +15,18 @@ Route::resource('/', 'StoreController');
 Route::post('/product/{id}', 'StoreController@addCart');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
+<<<<<<< HEAD
 Route::get('/product/cart', 'StoreController@cart');
 Route::get('/product/detail', function(){
+=======
+Route::get('/product/detail', function () {
+>>>>>>> dev
     return view('store.product_detail');
 });
+Route::get('/product/search', 'StoreController@search');
+// Route::get('product/detail/$product->id', function () {
+//     return view('store.product_detail');
+// });
 
 Auth::routes();
 
