@@ -1,6 +1,3 @@
-<?php  
-    use App\Categorie;
-?>
 
 <style>
     .navbar-brand{
@@ -22,10 +19,6 @@
         }
     }
 </style>
-
-@php
-    $categories = Categorie::all();
-@endphp
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light justify-content-between">

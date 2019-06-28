@@ -40,7 +40,7 @@
                         <form action="/product/v1" method="POST">
                             @csrf
                             @method('POST')
-                            // nanti v1 kita ganti sebagai id
+                            {{-- nanti v1 kita ganti sebagai id --}}
                             <button type="post" class="btn btn-danger btn-block">Beli</button>
                         </form>
                 </div>

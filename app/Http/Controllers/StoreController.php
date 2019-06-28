@@ -35,11 +35,8 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addCart(Request $request, $id)
+    public function cart()
     {
-        $cart = [1,2];
-        $request->session()->push('cart', $cart);
-
-        return back();
+        return view('store.cart');
     }
 }

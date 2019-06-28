@@ -15,6 +15,7 @@ Route::resource('/', 'StoreController');
 Route::post('/product/{id}', 'StoreController@addCart');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
+Route::get('/product/cart', 'StoreController@cart');
 Route::get('/product/detail', function(){
     return view('store.product_detail');
 });

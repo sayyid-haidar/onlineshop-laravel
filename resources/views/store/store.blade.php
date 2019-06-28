@@ -10,7 +10,6 @@
 <style>
     .header_cards {
         display: inline-block;
-        text-align: center;
         line-height: 7rem;
         background: lightblue;
         height: 7rem;
