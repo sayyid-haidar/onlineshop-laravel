@@ -1,6 +1,6 @@
 @section('title', 'Dashboard')
 
-@extends('tamplates.admin')
+@extends('templates.admin')
 @section('content')
         <div class="container-fluid">
           <div class="row">

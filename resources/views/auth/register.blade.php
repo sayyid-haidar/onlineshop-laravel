@@ -1,4 +1,4 @@
-@extends('tamplates.master')
+@extends('templates.master')
 
 @section('content')
 <div class="container pt-5">
