@@ -15,26 +15,17 @@ Route::resource('/', 'StoreController');
 Route::post('/product/{id}', 'StoreController@addCart');
 Route::get('/product', 'StoreController@product');
 Route::get('/aboute', 'StoreController@aboute');
-<<<<<<< HEAD
-<<<<<<< HEAD
-Route::get('/product/cart', 'StoreController@cart');
 Route::get('/product/detail', function(){
-=======
-Route::get('/product/detail', function () {
->>>>>>> dev
     return view('store.product_detail');
 });
-=======
+
 Route::get('/product/{id}', 'StoreController@detail')->name('product');
 Route::get('/contact', 'StoreController@contact');
 Route::get('/cart', 'StoreController@cart');
 Route::get('/checkout', 'StoreController@checkout');
 
->>>>>>> dev
+
 Route::get('/product/search', 'StoreController@search');
-// Route::get('product/detail/$product->id', function () {
-//     return view('store.product_detail');
-// });
 
 Auth::routes();
 
@@ -46,8 +37,6 @@ Route::prefix('/dashboard')->group(function () {
     Route::resource('/pages', 'Admin\PageController');
     Route::resource('/template', 'Admin\TemplateController');
 
-    Route::get('/tabel', 'AdminController@tabel');
-    Route::get('/toko', 'AdminController@toko');
     Route::get('/template-edit', 'TemplateController@edit');
     Route::get('/create', 'TemplateController@create');
     Route::get('/insert-insert', 'TemplateController@store');

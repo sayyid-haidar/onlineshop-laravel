@@ -21,12 +21,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = Page::get();
-        return view('dashboard.pages.a_page', compact('pages'));
-    }
-    public function database()
-    {
-        $pages = Page::all();
-        return view('components.navbar', compact('pages'));
+        return view('dashboard.pages.index', compact('pages'));
     }
 
     /**
@@ -36,7 +31,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('dashboard.pages.a_page_create');
+        return view('dashboard.pages.create');
     }
 
     /**
@@ -80,7 +75,7 @@ class PageController extends Controller
     public function edit($id)
     {
         $pages = Page::find($id);
-        return view('dashboard.pages.a_page_edit', compact('pages'));
+        return view('dashboard.pages.edit', compact('pages'));
     }
 
     /**

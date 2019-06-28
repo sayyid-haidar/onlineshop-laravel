@@ -25,7 +25,7 @@ class ProductController extends Controller
     // Method Simpan dari Form Jangan Lupa CSRF
     public function store(Request $request)
     {
-        // Memvalidasi Data di Form 
+        // Memvalidasi Data di Form
         $this->validate($request, [
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000',
             'name' => 'required',
@@ -84,14 +84,5 @@ class ProductController extends Controller
         Storage::delete('product/' . $gambar->image);
 
         $gambar->delete();
-        // echo 'storage/product/' . $gambar->image;
-        // hapus data
-        // Product::where('id', $id)->delete();
-        // Session::flash("success", "berhasil Menghapus Product");
-        // return redirect()->to( "dashboard/product");
-
-        // Product::find($id)->delete();
-        
-        // return redirect()->to("dashboard/product");
     }
 }

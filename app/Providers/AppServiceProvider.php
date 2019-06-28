@@ -9,7 +9,6 @@ use App\Categorie;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public $catagorie = Categorie::all();
     /**
      * Register any application services.
      *
@@ -28,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        View::share('catagories', $catagorie );
+        View::share('catagories', Categorie::all() );
     }
 }

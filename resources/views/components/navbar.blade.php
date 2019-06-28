@@ -35,9 +35,9 @@
                 <li class='btn_navbar nav-item mx-2 ' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><a href="{{url('')}}">Categorie</a>
                 <div class="dropdown-menu pb-2">
                     <h6 class="dropdown-header" align="center">Pilihan Kopi</h6>
-                    @foreach ( $categories as $categorie )
-                    <a  class="dropdown-item"href='#'>{{ $categorie->name }}</a>
-                    @endforeach
+                    {{-- @foreach ( $categories as $categorie ) --}}
+                    <a  class="dropdown-item"href='#'></a>
+                    {{-- @endforeach --}}
                 </div>
                 </li>
                 <li class="btn_navbar nav-item mx-2">

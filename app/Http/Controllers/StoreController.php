@@ -1,23 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-
-use Illuminate\Http\Request;
-use App\Categorie;
-use Illuminate\Support\Facades\Schema;
-
-class StoreController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-=======
 
 use App\Categorie;
-
 use Illuminate\Http\Request;
 use App\Product;
 use App\Template;
@@ -27,20 +12,13 @@ use Session;
 
 class StoreController extends Controller
 {
-<<<<<<< HEAD
->>>>>>> dev
-=======
+
     public function __construct()
     {
-        //load all variable categories to all method 
-        // View::share('categories', Categorie::all());
         $this->template = Template::where("selected", '1')->first();
     }
->>>>>>> dev
     public function index()
     {
-        // $list_categories = Categorie::all();
-        // return view("store.index", compact('list_categories'));
         return view('templates.' . $this->template->folder . '.index');
     }
 
@@ -71,32 +49,12 @@ class StoreController extends Controller
     {
         return view('templates.' . $this->template->folder . '.about');
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function cart()
-    {
-        return view('store.cart');
-    }
-=======
-    // `public function show($id)
-    // {
-    //     $product = Store::find($id);
-    //     return view('store.product_detail', compact('product'));
-    // }`
->>>>>>> dev
-=======
-    // public function show($id)
-    // {
-    //     $product = Store::find($id);
-    //     return view('store.product_detail', compact('product'));
-    // }
     public function contact()
     {
         return view('templates.' . $this->template->folder . '.contact');
@@ -114,5 +72,4 @@ class StoreController extends Controller
         $detail = Product::find($id);
         return view('templates.' . $this->template->folder . '.product_detail', compact('detail'));
     }
->>>>>>> dev
 }
