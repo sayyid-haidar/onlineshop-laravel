@@ -8,6 +8,7 @@ use App\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
+use File;
 
 class ProductController extends Controller
 {
@@ -31,7 +32,6 @@ class ProductController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000',
             'name' => 'required',
             'code' => 'required|unique:products,code',
-            'varian' => 'required',
             'stock' => 'required|integer',
             'price' => 'required|integer',
             'categorie_id' => 'required|integer'
@@ -47,8 +47,9 @@ class ProductController extends Controller
         $product->save();
 
         //upload file to Folder storage
-        $path = $request->file('image')->storeAs('public/product', $product->id . '.jpg');
+        $request->file('image')->move(public_path('product'), $product->id . '.jpg');
         $product->image = $product->id . '.jpg';
+
         $product->save();
         Session::flash("success", "berhasil Menambah Product");
         return redirect()->to("dashboard/product");
@@ -83,8 +84,9 @@ class ProductController extends Controller
     {
         // hapus file
         $gambar = Product::where('id', $id)->first();
-        Storage::delete('product/' . $gambar->image);
+        File::delete('product/' . $gambar->image);
 
         $gambar->delete();
+        return back();
     }
 }

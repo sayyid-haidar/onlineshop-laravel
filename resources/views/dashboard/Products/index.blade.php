@@ -45,7 +45,7 @@
                 <tbody>
                   <tr>
                     @foreach ( $products as $product)
-                    <td><img src="{{url('')}}/storage/product/{{$product->image}}" style="width: 50px"></td>
+                    <td><img src="{{url("product/". $product->image)}}" style="width: 50px"></td>
                     <td>{{$product->code}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->varian}}</td>

@@ -26,7 +26,7 @@
               </div>
               <div class="form-group">
                 <label for="varian">Varian</label>
-                <select name="categorie_id" id="categorie_id" class="form-control">
+                <select name="varian" id="categorie_id" class="form-control">
                     <option value="">Pilih Variant</option>
                     @foreach($list_variant as $var)
                     <option value="{{$var}}">{{$var}}</option>

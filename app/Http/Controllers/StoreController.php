@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use App\Product;
 use App\Template;
+use App\Categorie;
 use Session;
-
 
 class StoreController extends Controller
 {
@@ -14,6 +15,7 @@ class StoreController extends Controller
     public function __construct()
     {
         $this->template = Template::where("selected", '1')->first();
+        View::share('categories', Categorie::get());
     }
     public function index()
     {

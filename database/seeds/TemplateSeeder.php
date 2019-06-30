@@ -14,7 +14,8 @@ class TemplateSeeder extends Seeder
     {
         Template::create([
             "name" => "template Sayid",
-            "folder" => "template_sayid"
+            "folder" => "template_sayid",
+            "selected" => 1,
         ]);
         Template::create([
             "name" => "template Bachtiar",

@@ -17,7 +17,7 @@ class CreateTemplatesTable extends Migration
             $table->bigIncrements('id');
             $table->string("name");
             $table->string("folder");
-            $table->enum("selected",[0,1])->default('0');
+            $table->boolean("selected")->nullable();
             $table->timestamps();
         });
     }
