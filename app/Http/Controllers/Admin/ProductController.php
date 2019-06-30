@@ -20,7 +20,8 @@ class ProductController extends Controller
     public function create()
     {
         $list_categories = Categorie::all();
-        return view("dashboard.Products.create", compact('list_categories'));
+        $list_variant = ["Kopi Arabica", "Kopi Robusta", "Kopi Luwak", "Kopi Liberika"];
+        return view("dashboard.Products.create", compact('list_categories', "list_variant"));
     }
     // Method Simpan dari Form Jangan Lupa CSRF
     public function store(Request $request)
@@ -44,6 +45,7 @@ class ProductController extends Controller
         $product->stock =  $request->input("stock");
         $product->categorie_id  = $request->input("categorie_id");
         $product->save();
+
         //upload file to Folder storage
         $path = $request->file('image')->storeAs('public/product', $product->id . '.jpg');
         $product->image = $product->id . '.jpg';

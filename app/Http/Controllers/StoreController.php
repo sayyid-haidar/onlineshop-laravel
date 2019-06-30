@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Categorie;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Template;
-use DB;
 use Session;
 
 
@@ -31,13 +29,14 @@ class StoreController extends Controller
     {
         $search = $request->get('search');
         if ($search != null) {
-            $product = DB::table('products')
+            $product = Product::get()
                 ->where('name', 'like', '%' . $search . '%')
                 ->orWhere('varian', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%')->get();
             return view('store.product', compact('product'));
         } else {
-            $product = DB::table('products')->where('name', 'like', '%' . $search . '%')
+            $product = Product::get()
+                ->where('name', 'like', '%' . $search . '%')
                 ->orWhere('varian', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%')->get();
             Session::flash("error", "Data not Found!");

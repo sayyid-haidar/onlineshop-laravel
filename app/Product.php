@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-use App\Categorie;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Categorie;
 
 class Product extends Model
 {
@@ -12,5 +12,4 @@ class Product extends Model
     {
         return $this->belongsTo("App\Categorie");
     }
-    
 }

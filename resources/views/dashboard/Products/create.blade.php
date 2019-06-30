@@ -12,21 +12,26 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="code_product">Code Product</label>
-                <input type="text" class="form-control form-control-lg" name="code" id="code" placeholder="Masukan Code Product">
+                <input type="text" class="form-control" name="code" id="code" placeholder="Masukan Code Product">
                 @error("code")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
                 @enderror
               </div>
               <div class="form-group">
                 <label for="nama_product">Nama Product</label>
-                <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Masukan Nama Product">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Masukan Nama Product">
                 @error("name")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
                 @enderror
               </div>
               <div class="form-group">
                 <label for="varian">Varian</label>
-                <input type="text" class="form-control form-control-lg" name="varian" id="varian" aria-describedby="varian" placeholder="Masukan Varian">
+                <select name="categorie_id" id="categorie_id" class="form-control">
+                    <option value="">Pilih Variant</option>
+                    @foreach($list_variant as $var)
+                    <option value="{{$var}}">{{$var}}</option>
+                    @endforeach
+                </select>
                 @error("varian")
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
                 @enderror
@@ -67,7 +72,7 @@
               <div class="form-group">
                 <label for="categorie_id">categorie</label>
                 <select name="categorie_id" id="categorie_id" class="form-control">
-                    <option value="">>> PILIHAN <<</option>
+                    <option value="">Pilih Catagorie</option>
                     @foreach($list_categories as $categorie)
                     <option value="{{$categorie->id}}">{{$categorie->name}}</option>
                     @endforeach
@@ -76,7 +81,7 @@
                   <div class="badge badge-danger"><small>{{$message}}</small></div>
                 @enderror
               </div>
-              
+
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-8">
