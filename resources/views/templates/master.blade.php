@@ -43,6 +43,7 @@
             line-height: 2rem;
             color: white;
         }
+
         .dropdown-item {
             height: 3rem;
             line-height: 3rem;
@@ -50,24 +51,31 @@
 
     </style>
 </head>
+
 <body>
 
+    @if( Route::is('login','register'))
     <div class="container">
-        @include('components.navbar')
-              <tbody>
-                    @yield('content')
-              </tbody>
-          </div>
+
+        @yield('content')
 
     </div>
 
-    @if( Route::is('dashboard','login','register'))
+
+
     <footer class="fixed-bottom">
         <div class="container text-center pb-1">
             Made Whit Love for Indonesia
         </div>
     </footer>
     @else
+    <div class="container">
+        @include('components.navbar')
+
+        @yield('content')
+
+    </div>
+
     <footer class="container">
         @include('components.footer')
         <div id="keranjang">
@@ -84,32 +92,6 @@
         </div>
     </footer>
     @endif
-<script>
-    // $(document).ready(function(){
-
-    //     fetch_product_data();
-        
-    //     function fetch_product_data(query = ''){
-    //         $.ajax({
-    //             url : "{{url('/product/action')}}",
-    //             method : "GET",
-    //             data : {query:query},
-    //             dataType : 'json',
-    //             success : function(data){
-    //                 $('tbody').html(data.table_data);
-    //                 $('#total_records').text(data.total_data);
-                    
-    //             }
-    //         });
-    //     }
-    //     $(document).on('keyup', '#search', function(){
-    //         var query = $(this).val();
-    //         fetch_product_data(query); 
-    //     });
-    // });
-    
-
-</script>
 
 
     <!-- Optional JavaScript -->
