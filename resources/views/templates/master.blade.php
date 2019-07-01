@@ -78,18 +78,6 @@
 
     <footer class="container">
         @include('components.footer')
-        <div id="keranjang">
-            <div id="keranjang_jumlah">
-                5
-            </div>
-            <div class="dropdown mr-1">
-                <i class="fa fa-cart-plus fa-2x" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false" data-offset="10,20" style="color: white"></i>
-                <div class="dropdown-menu py-0" aria-labelledby="dropdownMenuOffset" style="width: 15rem">
-                    <p class="dropdown-item">keranjang</p>
-                </div>
-            </div>
-        </div>
     </footer>
     @endif
 

@@ -23,16 +23,6 @@ use App\Categorie;
         justify-content: center;
     }
 
-    .card_product {
-        border: 1px solid black;
-        border-radius: 1rem;
-        overflow: hidden;
-        display: inline-block;
-        width: 10rem;
-        height: 18rem;
-        flex: 0 0 auto;
-        margin: 5px;
-    }
 
     .JumboGambar {
         background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
@@ -53,12 +43,6 @@ use App\Categorie;
             background: lightcoral;
         }
 
-        .card_product {
-            width: 12rem;
-            height: 20rem;
-            margin: 5px;
-        }
-
         .JumboGambar {
             background-image: url('https://www.finansialku.com/wp-content/uploads/2018/06/Kopi-Termahal-02-Kopi-Finansialku.jpg');
             background-size: cover;
@@ -68,6 +52,47 @@ use App\Categorie;
             text-shadow: 3px 2px 1px black;
             text-align: center;
         }
+    }
+
+    .card-product {
+        width: 15rem;
+        display: inline-flex;
+    }
+
+    .card-product .img-wrap {
+        border-radius: 3px 3px 0 0;
+        overflow: hidden;
+        position: relative;
+        height: 220px;
+        text-align: center;
+    }
+
+    .card-product .img-wrap img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    .card-product .info-wrap {
+        overflow: hidden;
+        padding: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .card-product .bottom-wrap {
+        padding: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .label-rating {
+        margin-right: 10px;
+        color: #333;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .card-product .price-old {
+        color: #999;
     }
 
 </style>
@@ -99,13 +124,12 @@ $categories = Categorie::all();
 
 {{-- CARD --}}
 <div class="row">
-    @for($i=0;$i<1;$i++)
-    @foreach ($categories as $categorie) <div class="col-6 col-md-3">
-        <div class="jumbotron JumboGambar bg-primary owl-carousel owl-theme" style="color:yellow;">
-        {{ $categorie->name }}</div>
-        </div>
-    @endforeach
-    @endfor
+    @for($i=0;$i<1;$i++) @foreach ($categories as $categorie) <div class="col-6 col-md-3">
+        <div class="jumbotron JumboGambar bg-primary" style="color:yellow;">
+            {{ $categorie->name }}</div>
+</div>
+@endforeach
+@endfor
 </div>
 
 <div class="row">
@@ -126,37 +150,23 @@ $categories = Categorie::all();
 {{-- card_product --}}
 
 <div class="cards_wrapper">
-    @for($i=0;$i<4;$i++) <div class="card_product">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSZLsEuhDI522ip630fc4OtsNUhFw0YcuS6XB3AWsOslPYElbh"
-            class="card-img-top" alt="coffe">
-        <div class="card-body">
-            <p class="card-text">Coffee</p>
-            <h3 class="card-title">Toraja Coffee</h3>
-            <a href="{{url('/product/detail')}}" class="btn btn-primary">Buy Here!</a>
+
+    @foreach ($product as $item)
+    <figure class="card card-product">
+        <a href="{{url('product/'. $item->id)}}" class="img-wrap"><img src="{{url("/product/". $item->image)}}"></a>
+        <figcaption class="info-wrap">
+            <h4 class="title" >{{$item->name}}</h4>
+            <p class="desc">{{$item->varian}}</p>
+        </figcaption>
+        <div class="bottom-wrap">
+            <a href="{{route('product.show',$item->id)}}" class="btn btn-sm btn-primary float-right">Order Now</a>
+            <div class="price-wrap h5">
+                <span class="price-new">Rp. {{$item->price}}</span>
+            </div>
         </div>
-</div>
-@endfor
+    </figure>
+    @endforeach
+
 </div>
 
-@endsection
-@section('script')
-<script>
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 5
-            }
-        }
-    });
-
-</script>
 @endsection

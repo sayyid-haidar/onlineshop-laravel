@@ -12,14 +12,9 @@
 */
 
 Route::resource('/', 'StoreController');
-Route::post('/product/{id}', 'StoreController@addCart');
-Route::get('/product', 'StoreController@product');
+Route::get('/products', 'StoreController@product');
+Route::get('/product/{id}', 'StoreController@detail');
 Route::get('/aboute', 'StoreController@aboute');
-Route::get('/product/detail', function(){
-    return view('store.product_detail');
-});
-
-Route::get('/product/{id}', 'StoreController@detail')->name('product');
 Route::get('/contact', 'StoreController@contact');
 Route::get('/cart', 'StoreController@cart');
 Route::get('/checkout', 'StoreController@checkout');

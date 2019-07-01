@@ -41,25 +41,13 @@
                 </div>
                 </li>
                 <li class="btn_navbar nav-item mx-2">
-                    <a href="{{url('product')}}">Product</a>
+                    <a href="{{url('products')}}">Product</a>
                 </li>
                 <li class="btn_navbar nav-item mx-2">
                     <a href="{{url('aboute')}}">About</a>
                 </li>
             </ul>
-
-            @if(Auth::check() && Auth::user()->status_field != 'approved')
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <a href="{{url('/dashboard')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Admin</a>
-                <button type="submit" class="btn btn-outline-danger my-sm-0 mx-2">Logout</button>
-            </form>
-
-            @else
-            <a href="{{url('/login')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Masuk</a>
-            <a href="{{url('/register')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Daftar</a>
-
-            @endif
+            <button class="btn btn-outline-primary my-2 my-sm-0 mx-2">CART HERE</button>
         </div>
     </nav>
 </div>

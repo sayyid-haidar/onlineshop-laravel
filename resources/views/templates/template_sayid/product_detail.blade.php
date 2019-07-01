@@ -17,15 +17,15 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-catagorie">
-                    <div class="btn btn-primary btn-sm">Arabica</div>
+                    <div class="btn btn-primary btn-sm">{{$detail->varian}}</div>
                     <div class="btn btn-primary btn-sm">Top List</div>
                     <div class="btn btn-primary btn-sm">Indonesia</div>
                 </div>
-                <h2 class="card-title pt-3">{{$data->name}}</h2>
-                <p class="card-text">{{$data->description}}</p>
+                <h2 class="card-title pt-3">{{$detail->name}}</h2>
+                <p class="card-text">{{$detail->description}}</p>
                 <hr>
                 <div class="card-price">
-                        <h3 class="card-title">Rp, {{$data->price}}/kg </h3>
+                        <h3 class="card-title">Rp, {{$detail->price}}/kg </h3>
                         <div class="row">
                                 <div class="col-8">
                                     <input type="text" class="form-control border-dark" placeholder="5 KG">
@@ -37,9 +37,7 @@
                             </div>
                         <h6 class="card-subtitle text-muted pt-3">Total Pesanan</h6>
                         <h4 class="card-title">Rp, 500.000 <small class="text-muted">( 50.000 x 5 )</small> </h4>
-                        <form action="/product/v1" method="POST">
-                            @csrf
-                            @method('POST')
+                        <form action="/product/v1" method="">
                             {{-- nanti v1 kita ganti sebagai id --}}
                             <button type="post" class="btn btn-danger btn-block">Beli</button>
                         </form>

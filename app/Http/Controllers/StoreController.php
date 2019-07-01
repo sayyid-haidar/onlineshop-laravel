@@ -19,7 +19,8 @@ class StoreController extends Controller
     }
     public function index()
     {
-        return view('templates.' . $this->template->folder . '.index');
+        $product = Product::All();
+        return view('templates.' . $this->template->folder . '.index', compact('product'));
     }
 
     public function product()
