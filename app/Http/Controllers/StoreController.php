@@ -28,24 +28,6 @@ class StoreController extends Controller
         $product = Product::All();
         return view('templates.' . $this->template->folder . '.product', compact('product'));
     }
-    public function search(Request $request)
-    {
-        $search = $request->get('search');
-        if ($search != null) {
-            $product = Product::get()
-                ->where('name', 'like', '%' . $search . '%')
-                ->orWhere('varian', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')->get();
-            return view('store.product', compact('product'));
-        } else {
-            $product = Product::get()
-                ->where('name', 'like', '%' . $search . '%')
-                ->orWhere('varian', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')->get();
-            Session::flash("error", "Data not Found!");
-            return view('store.product', compact('product'));
-        }
-    }
 
     public function aboute()
     {
@@ -61,10 +43,49 @@ class StoreController extends Controller
     {
         return view('templates.' . $this->template->folder . '.contact');
     }
+
+
     public function cart()
     {
-        return view('templates.' . $this->template->folder . '.cart');
+        $carts = Session('cart');
+        return view('templates.' . $this->template->folder . '.cart', compact('carts'));
     }
+
+    public function add_cart(Request $request)
+    {
+
+        // Session::forget('cart');
+
+        $product = Product::find($request->id);
+        // dd(Session('cart'));
+
+        if (Session::has('cart')) {
+            foreach (Session('cart') as $crt) {
+                if ($product->id == $crt['id']) {
+                    $crt->qty++;
+                    return back();
+                }
+            }
+
+            $product->qty = 1;
+            Session::push('cart', $product);
+            return back();
+
+        } else {
+            Session::put('cart', []);
+            $product->qty = 1;
+            Session::push('cart', $product);
+            return back();
+        }
+    }
+
+    public function cart_delete()
+    {
+        Session::forget('cart');
+        return back();
+    }
+
+
     public function checkout()
     {
         return view('templates.' . $this->template->folder . '.checkout');

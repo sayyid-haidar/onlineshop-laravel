@@ -59,6 +59,11 @@ use App\Categorie;
         display: inline-flex;
     }
 
+    .card-product .title {
+        color: black;
+        text-decoration: none;
+    }
+
     .card-product .img-wrap {
         border-radius: 3px 3px 0 0;
         overflow: hidden;
@@ -155,11 +160,15 @@ $categories = Categorie::all();
     <figure class="card card-product">
         <a href="{{url('product/'. $item->id)}}" class="img-wrap"><img src="{{url("/product/". $item->image)}}"></a>
         <figcaption class="info-wrap">
-            <h4 class="title" >{{$item->name}}</h4>
+            <a href="{{url('product/'. $item->id)}}" class="title h4">{{$item->name}}</a>
             <p class="desc">{{$item->varian}}</p>
         </figcaption>
         <div class="bottom-wrap">
-            <a href="{{route('product.show',$item->id)}}" class="btn btn-sm btn-primary float-right">Order Now</a>
+            <form action="/product/cart/add" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" onclick="alert('masukan ke keranjang')" name="id" value="{{$item->id}}" class="btn btn-sm btn-primary float-right">Order Now</button>
+            </form>
             <div class="price-wrap h5">
                 <span class="price-new">Rp. {{$item->price}}</span>
             </div>

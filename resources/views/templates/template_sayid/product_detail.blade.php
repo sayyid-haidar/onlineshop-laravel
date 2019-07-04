@@ -9,17 +9,13 @@
 @section('content')
 <div class="row">
     <div class="col-lg-8">
-        <div class="jumbotron jumbotron-fluid"
-        style="background:url('https://media.gettyimages.com/photos/small-cup-of-coffee-on-bright-yellow-background-picture-id516652078?b=1&k=6&m=516652078&s=612x612&w=0&h=u3NsZvYpO9MMrC6b6NQtx64nVGaYqim0GJHwIWyuu7k=');background-size: cover; height: 25rem;"
-        ></div>
+        <img src="{{url("/product/". $detail->image)}}" alt="{{$detail->name}}">
     </div>
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
                 <div class="card-catagorie">
                     <div class="btn btn-primary btn-sm">{{$detail->varian}}</div>
-                    <div class="btn btn-primary btn-sm">Top List</div>
-                    <div class="btn btn-primary btn-sm">Indonesia</div>
                 </div>
                 <h2 class="card-title pt-3">{{$detail->name}}</h2>
                 <p class="card-text">{{$detail->description}}</p>
@@ -35,11 +31,12 @@
                                     <button class="btn btn-danger btn-md"> + </button>
                                 </div>
                             </div>
-                        <h6 class="card-subtitle text-muted pt-3">Total Pesanan</h6>
+                        <h6 class="card-subtitle text-muted pt-5">Total Pesanan</h6>
                         <h4 class="card-title">Rp, 500.000 <small class="text-muted">( 50.000 x 5 )</small> </h4>
-                        <form action="/product/v1" method="">
-                            {{-- nanti v1 kita ganti sebagai id --}}
-                            <button type="post" class="btn btn-danger btn-block">Beli</button>
+                        <form action="/product/cart/add" method="POST">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" name="id" value="{{$detail->id}}" class="btn btn-block btn-danger float-right">Order Now</button>
                         </form>
                 </div>
             </div>
@@ -48,7 +45,3 @@
 </div>
 @endsection
 
-
-@section('script')
-<script src="{{mix('js/app.js')}}" ></script>
-@endsection

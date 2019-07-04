@@ -46,8 +46,17 @@
                 <li class="btn_navbar nav-item mx-2">
                     <a href="{{url('aboute')}}">About</a>
                 </li>
+                <li class="btn_navbar nav-item mx-2">
+                    <a href="{{url('cart')}}">Cart</a>
+                </li>
             </ul>
-            <button class="btn btn-outline-primary my-2 my-sm-0 mx-2">CART HERE</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0 mx-2">
+                @if(session()->has('cart'))
+                    Total: {{count(session('cart'))}}
+                @else
+                    Total: 0
+                @endif
+            </button>
         </div>
     </nav>
 </div>

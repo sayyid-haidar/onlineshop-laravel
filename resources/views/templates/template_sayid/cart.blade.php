@@ -10,38 +10,50 @@
 @endsection
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
+<section id="product" class="pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <table id="table-product" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Nama Kopi</th>
+                                    <th>Varian</th>
+                                    <th>Jumlah</th>
+                                    <th width="200px">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(Session::has('cart'))
+                                    @foreach ($carts as $cart)
+                                    <tr>
+
+                                        <td><img src="{{url("product/". $cart->image)}}" style="width: 50px"></td>
+                                        <td>{{$cart->name}}</td>
+                                        <td>{{$cart->varian}}</td>
+                                        <td>{{$cart->qty}}</td>
+                                        <td>
+                                            <a href="" class=" btn btn-warning">CEK</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+
+                            </tbody>
+                        </table>
+
+                        <div class="d-flex justify-content-end">
+                            <a href="{{url('cart/delete')}}" class="btn btn-primary">Check Out</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 @endsection
