@@ -10,21 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::resource('/', 'StoreController');
-Route::get('/products', 'StoreController@product');
-Route::get('/product/{id}', 'StoreController@detail');
-Route::post('/product/cart/add/', 'StoreController@add_cart');
-Route::get('/aboute', 'StoreController@aboute');
-Route::get('/contact', 'StoreController@contact');
-Route::get('/cart', 'StoreController@cart');
-Route::get('/checkout', 'StoreController@checkout');
-
-Route::get('/cart/delete', 'CartController@cart_delete');
-Route::get('/product/search', 'CartController@search');
+Route::get('/', 'User\StoreController@index');
+Route::get('/about', 'User\StoreController@about');
 
 Auth::routes();
 
+
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('/', 'User\StoreController@cartView');
+    Route::get('/delete', 'User\CartController@cart_delete');
+});
 
 Route::prefix('/dashboard')->group(function () {
     Route::resource("/product", "Admin\ProductController");
@@ -43,10 +38,23 @@ Route::prefix('/dashboard')->group(function () {
     Route::post('/template/{id}/edit', 'TemplateController@edit');
 });
 
-Route::prefix('/user')->group(function(){
+Route::prefix('/user')->group(function () {
     Route::get('/', 'User\UserBoardController@index');
     Route::get('/wishlist', 'User\UserBoardController@index');
     Route::get('/pembelian', 'User\UserBoardController@index');
     Route::get('/transaksi', 'User\UserBoardController@index');
     Route::get('/pengaturan', 'User\UserBoardController@index');
+});
+
+Route::prefix('/product')->group(function () {
+    Route::get('/all', 'User\StoreController@product');
+    Route::get('/{id}', 'User\StoreController@detail');
+    Route::get('/search', 'User\CartController@search');
+
+    Route::post('/cart/add', 'User\CartController@addCart');
+});
+
+Route::prefix('/checkout')->group(function () {
+    Route::get('/', 'User\StoreController@checkout');
+    Route::post('/addcostumer', 'User\SaleController@addCostumer');
 });

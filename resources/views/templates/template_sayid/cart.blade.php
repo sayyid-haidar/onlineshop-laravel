@@ -16,7 +16,6 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-
                         <table id="table-product" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -28,27 +27,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(Session::has('cart'))
-                                    @foreach ($carts as $cart)
-                                    <tr>
 
-                                        <td><img src="{{url("product/". $cart->image)}}" style="width: 50px"></td>
-                                        <td>{{$cart->name}}</td>
-                                        <td>{{$cart->varian}}</td>
-                                        <td>{{$cart->qty}}</td>
-                                        <td>
-                                            <a href="" class=" btn btn-warning">CEK</a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
+                                @foreach ($cart_user as $crt_u)
+                                <tr>
+
+                                    <td><img src="{{url("product/". $crt_u->product->image)}}" style="width: 50px"></td>
+                                    <td>{{$crt_u->product->name}}</td>
+                                    <td>{{$crt_u->product->varian}}</td>
+                                    <td>{{$crt_u->qty}}</td>
+                                    <td>
+                                        <a href="" class=" btn btn-warning">CEK</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                                @if(Session::has('cart'))
+                                @foreach ($cartSession as $crt_s)
+                                <tr>
+
+                                    <td><img src="{{url("product/". $crt_s->image)}}" style="width: 50px"></td>
+                                    <td>{{$crt_s->name}}</td>
+                                    <td>{{$crt_s->varian}}</td>
+                                    <td>{{$crt_s->qty}}</td>
+                                    <td>
+                                        <a href="" class=" btn btn-warning">CEK</a>
+                                    </td>
+                                </tr>
+                                @endforeach
                                 @endif
 
                             </tbody>
                         </table>
 
-                        <div class="d-flex justify-content-end">
-                            <a href="{{url('cart/delete')}}" class="btn btn-primary">Check Out</a>
+                        @if(count($cart_user) > 0 || Session::has('cart'))
+                        <div class="d-flex justify-content-around">
+                            <a href="{{url('cart/delete')}}" class="btn btn-danger">Hapus Cart</a>
+                            <a href="{{url('checkout')}}" class="btn btn-primary">Chack Out</a>
                         </div>
+                        @endif
 
                     </div>
                 </div>

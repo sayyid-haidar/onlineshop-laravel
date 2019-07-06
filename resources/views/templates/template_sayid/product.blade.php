@@ -73,7 +73,7 @@
             <form action="/product/cart/add" method="POST">
                 @csrf
                 @method('POST')
-                <button type="submit" onclick="alert('masukan ke keranjang')" name="id" value="{{$item->id}}" class="btn btn-sm btn-primary float-right">Order
+                <button type="submit" name="id" value="{{$item->id}}" class="btn btn-sm btn-primary float-right">Order
                     Now</button>
             </form>
             <div class="price-wrap h5">

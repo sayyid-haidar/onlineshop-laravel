@@ -11,44 +11,50 @@
 
 @section('content')
 <section id="product" class="pb-4">
-        <div class="container-fluid">
-          <div class="row">
+    <div class="container-fluid">
+        <div class="row">
             <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="table-responsive pt-4">
-                    <table id="table-product" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>image</th>
-                          <th>Nama Kopi</th>
-                          <th>Varian</th>
-                          <th>Jumlah</th>
-                          <th width="200px">action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
+                <div class="card">
+                    <div class="card-body">
+                        <section class="pb-4">
+                            <div class="container-fluid">
+                                <form action="{{url('checkout/addcostumer')}}" method="POST">
+                                    @csrf
+                                    @method('POST')
 
-                          <td><img src="" style="width: 50px"></td>
-                          <td>Nama</td>
-                          <td>Jumlah</td>
-                          <td>stock</td>
-                          <td>
-                            <a href="""><button class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
-                          </td>
-                        </tr>
-                    </table>
-                    {{-- Pemanggilan Paginate dibuat 3 data --}}
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary">Check Out</button>
+                                    <div class="card border-info">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="nama">Nama Penerima</label>
+                                                <input type="text" class="form-control form-control-lg" name="nama"
+                                                    id="nama" placeholder="Masukan Judul">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control form-control-lg" name="email"
+                                                    id="email" placeholder="Masukan Judul">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone">Nomor Telpon</label>
+                                                <input type="number" class="form-control form-control-lg" name="phone"
+                                                    id="phone" placeholder="Masukan Judul">
+                                            </div>
+
+                                             <div class="form-group">
+                                                <label for="alamat">Alamat</label>
+                                                <textarea class="form-control form_input_alamat"
+                                                    id="exampleFormControlTextarea1" name="alamat"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-lg btn-block"><i
+                                                    class="fa fa-save"></i> SIMPAN</button>
+                                        </div>
+
+                                    </div>
+                        </section>
                     </div>
-                  </div>
-
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
+    </div>
+</section>
 @endsection

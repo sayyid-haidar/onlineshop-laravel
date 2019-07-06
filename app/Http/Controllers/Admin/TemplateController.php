@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Template;
 use App\User;
-use Session; 
+use Session;
 use DB;
 
 
 class TemplateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+
     public function index()
     {
         $template = Template::paginate(10);

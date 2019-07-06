@@ -12,6 +12,11 @@ use File;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         $products = Product::orderBy("id", "DESC")->paginate(3);

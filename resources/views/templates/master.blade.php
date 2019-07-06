@@ -29,6 +29,8 @@
     <title>@yield('title')</title>
 
     @yield('style')
+
+
     <style>
         #keranjang {
             border-radius: 50% 5px 50% 50%;
@@ -57,6 +59,25 @@
         .dropdown-item {
             height: 3rem;
             line-height: 3rem;
+        }
+
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 24px;
+            line-height: 1.33;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
         }
 
     </style>
@@ -90,7 +111,6 @@
         @include('components.footer')
     </footer>
     @endif
-
 
     @yield('script')
 </body>

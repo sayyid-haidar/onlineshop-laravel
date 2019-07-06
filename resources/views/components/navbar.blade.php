@@ -1,12 +1,13 @@
-
 <style>
-    .navbar-brand{
+    .navbar-brand {
         font-size: 2rem;
     }
+
     .btn_navbar a {
-        text-decoration:none;
+        text-decoration: none;
         color: black;
     }
+
     @media (min-width: 768px) {
         .btn_navbar:hover::after {
             content: "";
@@ -18,6 +19,7 @@
             margin-bottom: -10px;
         }
     }
+
 </style>
 
 <div class="container">
@@ -32,31 +34,43 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="dropdown navbar-nav mr-auto ">
-                <li class='btn_navbar nav-item mx-2 ' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><a href="{{url('')}}">Categorie</a>
-                <div class="dropdown-menu pb-2">
-                    <h6 class="dropdown-header" align="center">Pilihan Kopi</h6>
-                    @foreach ( $categories as $ctr )
-                    <a  class="dropdown-item" href={{url("product/catagorie/$ctr->id")}}>{{$ctr->name}}</a>
-                    @endforeach
-                </div>
+                <li class='btn_navbar nav-item mx-2 ' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="{{url('')}}">Categorie</a>
+                    <div class="dropdown-menu pb-2">
+                        <h6 class="dropdown-header" align="center">Pilihan Kopi</h6>
+                        @foreach ( $categories as $ctr )
+                        <a class="dropdown-item" href={{url("product/catagorie/$ctr->id")}}>{{$ctr->name}}</a>
+                        @endforeach
+                    </div>
                 </li>
                 <li class="btn_navbar nav-item mx-2">
-                    <a href="{{url('products')}}">Product</a>
+                    <a href="{{url('product/all')}}">Product</a>
                 </li>
                 <li class="btn_navbar nav-item mx-2">
-                    <a href="{{url('aboute')}}">About</a>
+                    <a href="{{url('about')}}">About</a>
                 </li>
                 <li class="btn_navbar nav-item mx-2">
                     <a href="{{url('cart')}}">Cart</a>
                 </li>
             </ul>
-            <button class="btn btn-outline-primary my-2 my-sm-0 mx-2">
-                @if(session()->has('cart'))
-                    Total: {{count(session('cart'))}}
-                @else
-                    Total: 0
-                @endif
-            </button>
+
+            @if(Auth::check())
+            @if(Auth::user()->isAdmin())
+            <a href="{{url('dashboard')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Admin</a>
+            @else
+            <a href="{{url('user')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Dashboard</a>
+            @endif
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-outline-danger my-2 my-sm-0 mx-2">Logout</button>
+            </form>
+
+            @else
+            <a href="{{url('login')}}" class="btn btn-outline-primary my-2 my-sm-0 mx-2">Login</a>
+            <a href="{{url('register')}}" class="btn btn-outline-danger my-2 my-sm-0 mx-2">Register</a>
+            @endif
+
         </div>
     </nav>
 </div>

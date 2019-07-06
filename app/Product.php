@@ -12,4 +12,9 @@ class Product extends Model
     {
         return $this->belongsTo("App\Categorie");
     }
+
+    public function cart()
+    {
+        return $this->hasMany("App\Cart");
+    }
 }

@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Product;
 use App\Template;
 use App\Categorie;
+use App\Cart;
 use Session;
 
 class StoreController extends Controller
@@ -17,6 +20,8 @@ class StoreController extends Controller
         $this->template = Template::where("selected", '1')->first();
         View::share('categories', Categorie::get());
     }
+
+
     public function index()
     {
         $product = Product::All();
@@ -29,7 +34,7 @@ class StoreController extends Controller
         return view('templates.' . $this->template->folder . '.product', compact('product'));
     }
 
-    public function aboute()
+    public function about()
     {
         return view('templates.' . $this->template->folder . '.about');
     }
@@ -39,50 +44,20 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function contact()
+
+
+    public function cartView()
     {
-        return view('templates.' . $this->template->folder . '.contact');
-    }
-
-
-    public function cart()
-    {
-        $carts = Session('cart');
-        return view('templates.' . $this->template->folder . '.cart', compact('carts'));
-    }
-
-    public function add_cart(Request $request)
-    {
-
-        // Session::forget('cart');
-
-        $product = Product::find($request->id);
-        // dd(Session('cart'));
-
-        if (Session::has('cart')) {
-            foreach (Session('cart') as $crt) {
-                if ($product->id == $crt['id']) {
-                    $crt->qty++;
-                    return back();
-                }
-            }
-
-            $product->qty = 1;
-            Session::push('cart', $product);
-            return back();
-
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+            $cart_user = Cart::where('user_id', $user_id)->get();
         } else {
-            Session::put('cart', []);
-            $product->qty = 1;
-            Session::push('cart', $product);
-            return back();
+            $cart_user = [];
         }
-    }
 
-    public function cart_delete()
-    {
-        Session::forget('cart');
-        return back();
+
+        $cartSession = Session('cart');
+        return view('templates.' . $this->template->folder . '.cart', compact('cartSession', 'cart_user'));
     }
 
 
