@@ -55,7 +55,7 @@ class SaleController extends Controller
             }
         }
 
-        CartController::cart_delete();
+        CartController::deleteAllCart();
 
 
         return redirect(url('/pembayaran'));

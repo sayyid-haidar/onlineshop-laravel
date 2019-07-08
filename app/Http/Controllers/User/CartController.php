@@ -44,7 +44,7 @@ class CartController extends Controller
             if (Session::has('cart')) {
                 foreach (Session('cart') as $crt) {
                     if ($product->id == $crt['id']) {
-                        $crt->qty .= $qty;
+                        $crt->qty = $crt->qty + $qty;
                         return back();
                     }
                 }
@@ -61,12 +61,38 @@ class CartController extends Controller
         }
     }
 
-    public function addSale()
+    public function deleteCart($id)
     {
+        // dd($id);
+        if (Auth::check()){
+            $user_id = Auth::user()->id;
+            $cart_user = Cart::where('user_id', $user_id)->get();
+            foreach ($cart_user as $crt){
+                if($crt->product_id == $id){
+                    $crt->delete();
+                }
+            }
+            if (!Session('cart') == null){
+                $cart_sesion = Session('cart');
+                foreach ($cart_sesion as $crt){
+                    if($crt->id == $id){
+                        $crt->delete();
+                    }
+                }
+            }
+        } else {
+            $cart_sesion = Session('cart');
+            foreach ($cart_sesion as $crt){
+                if($crt->id == $id){
+                    $crt->delete();
+                }
+            }
+        }
 
+        return back();
     }
 
-    public static function cart_delete()
+    public static function deleteAllCart()
     {
         if (Auth::check()){
             $user_id = Auth::user()->id;

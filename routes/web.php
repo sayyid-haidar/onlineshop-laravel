@@ -18,7 +18,8 @@ Auth::routes();
 
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/', 'User\StoreController@cartView');
-    Route::get('/delete', 'User\CartController@cart_delete');
+    Route::get('/delete/{id}', 'User\CartController@deleteCart');
+    Route::get('/delete/all', 'User\CartController@deleteAllCart');
 });
 
 Route::prefix('/dashboard')->group(function () {
