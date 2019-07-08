@@ -6,9 +6,14 @@
 
 @section('style')
 <style>
+
+    .cards_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
     .card-product {
         width: 15rem;
-        display: inline-flex;
+        margin: .8rem;
     }
 
     .card-product .title {
@@ -60,7 +65,7 @@
 
 <div id="container">
 </div>
-<div class="cards_product_list">
+<div class="cards_wrapper">
 
     @foreach ($product as $item)
     <figure class="card card-product">

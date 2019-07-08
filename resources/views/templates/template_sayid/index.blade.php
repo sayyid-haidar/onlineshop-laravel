@@ -16,9 +16,8 @@ use App\Categorie;
     }
 
     .cards_wrapper {
-        -webkit-overflow-scrolling: touch;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         overflow-x: auto;
         justify-content: center;
     }
@@ -56,7 +55,7 @@ use App\Categorie;
 
     .card-product {
         width: 15rem;
-        display: inline-flex;
+        margin: .8rem;
     }
 
     .card-product .title {
