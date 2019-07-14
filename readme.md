@@ -1,14 +1,11 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<div align="center">
+    <h1>Online Shop (Laravel)</h1>
+    <img alt="index" src="https://i.imgur.com/4Tljdwi.png" />
+    <img alt="product" src="https://i.imgur.com/STnrheY.png" />
+    <img alt="product detail" src="https://i.imgur.com/ADFP8d8.png" />
+    <img alt="cart" src="https://i.imgur.com/BcB65Xx.png" />
+    <img alt="dashboard" src="https://i.imgur.com/fNPNnMu.png" />
+</div>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
-## About Laravel Olshop
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 
